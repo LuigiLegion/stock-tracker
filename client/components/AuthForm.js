@@ -1,5 +1,5 @@
 // Imports
-import React from 'react'
+import React, {Fragment} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -9,11 +9,33 @@ import {auth} from '../store'
 const AuthForm = ({name, displayName, error, handleSubmit}) => {
   return (
     <div className="center">
+      <h2>{displayName}</h2>
+
       <form
         className="auth-container center"
         name={name}
         onSubmit={handleSubmit}
       >
+        {displayName === 'Sign Up' ? (
+          <Fragment>
+            <div className="auth-containee">
+              <label htmlFor="firstName">
+                <small>First Name</small>
+              </label>
+
+              <input name="firstName" autoComplete="firstName" type="text" />
+            </div>
+
+            <div className="auth-containee">
+              <label htmlFor="lastName">
+                <small>Last Name</small>
+              </label>
+
+              <input name="lastName" autoComplete="lastName" type="text" />
+            </div>
+          </Fragment>
+        ) : null}
+
         <div className="auth-containee">
           <label htmlFor="email">
             <small>Email</small>
@@ -34,7 +56,10 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
           <button type="submit">{displayName}</button>
         </div>
 
-        {error && error.response && <div> {error.response.data} </div>}
+        {error &&
+          error.response && (
+            <div className="text-color-red"> {error.response.data} </div>
+          )}
       </form>
 
       <div className="center">
@@ -72,11 +97,13 @@ const mapDispatchToProps = dispatch => {
     handleSubmit(event) {
       event.preventDefault()
 
-      const formName = event.target.name
+      const firstName = event.target.firstName.value
+      const lastName = event.target.lastName.value
       const email = event.target.email.value
       const password = event.target.password.value
+      const formName = event.target.name
 
-      dispatch(auth(email, password, formName))
+      dispatch(auth(firstName, lastName, email, password, formName))
     }
   }
 }
