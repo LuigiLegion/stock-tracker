@@ -5,7 +5,9 @@ import PropTypes from 'prop-types'
 
 // Component
 export const Hello = ({firstName}) => {
-  return <span className="navbar-user-name">Hello, {firstName}.</span>
+  return (
+    <span className="navbar-user-name">Hello, {firstName || 'guest'}.</span>
+  )
 }
 
 // Container
