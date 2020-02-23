@@ -20,8 +20,8 @@ export const me = () => async dispatch => {
     const res = await axios.get('/auth/me')
 
     dispatch(getUser(res.data || initialState))
-  } catch (err) {
-    console.error(err)
+  } catch (error) {
+    console.error(error)
   }
 }
 
@@ -59,8 +59,8 @@ export const logout = () => async dispatch => {
 
     dispatch(removeUser())
     history.push('/login')
-  } catch (err) {
-    console.error(err)
+  } catch (error) {
+    console.error(error)
   }
 }
 
