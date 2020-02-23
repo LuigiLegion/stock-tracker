@@ -97,8 +97,12 @@ const mapDispatchToProps = dispatch => {
     handleSubmit(event) {
       event.preventDefault()
 
-      const firstName = event.target.firstName.value
-      const lastName = event.target.lastName.value
+      const firstName = event.target.firstName
+        ? event.target.firstName.value
+        : null
+      const lastName = event.target.lastName
+        ? event.target.lastName.value
+        : null
       const email = event.target.email.value
       const password = event.target.password.value
       const formName = event.target.name
