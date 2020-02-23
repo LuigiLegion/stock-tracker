@@ -30,11 +30,11 @@ const clean = () => {
 const getRemoteURL = (name, remotes) => {
   try {
     return remotes.filter(remote => remote.name === name)[0].refs.fetch
-  } catch (err) {
+  } catch (error) {
     console.log(
       `It appears that the remote ${name} does not exist.`,
       `Here is the full error:`,
-      err
+      error
     )
   }
 }
@@ -66,8 +66,8 @@ const getOutputFromCommand = async (command, args) => {
 /* Use git remote URLs to get app identifiers. */
 const getNamesFromGit = () =>
   new Promise((resolve, reject) =>
-    simpleGit.getRemotes(true, (err, res) => {
-      if (err) throw new Error(reject(err))
+    simpleGit.getRemotes(true, (error, res) => {
+      if (error) throw new Error(reject(error))
       resolve({
         fullName: GitUrlParse(getRemoteURL('origin', res)).full_name,
         appName: GitUrlParse(getRemoteURL('heroku', res)).name
