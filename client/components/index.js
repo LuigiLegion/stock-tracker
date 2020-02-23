@@ -5,6 +5,8 @@
  **/
 
 export {default as Navbar} from './Navbar'
-export {default as Home} from './Home'
 export {default as Hello} from './Hello'
+export {default as Home} from './Home'
+export {default as Portfolio} from './Portfolio'
+export {default as Transactions} from './Transactions'
 export {Login, Signup} from './AuthForm'
