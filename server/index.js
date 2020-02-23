@@ -35,8 +35,8 @@ passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.models.user.findByPk(id)
     done(null, user)
-  } catch (err) {
-    done(err)
+  } catch (error) {
+    done(error)
   }
 })
 
@@ -73,9 +73,9 @@ const createApp = () => {
   // Any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
-      const err = new Error('Not found')
-      err.status = 404
-      next(err)
+      const error = new Error('Not found')
+      error.status = 404
+      next(error)
     } else {
       next()
     }
@@ -87,14 +87,14 @@ const createApp = () => {
   })
 
   // Custom error handling
-  app.use((err, req, res, next) => {
+  app.use((error, req, res, next) => {
     // Just in case
-    if (!err.stack || !err.message) {
-      next(err)
+    if (!error.stack || !error.message) {
+      next(error)
     }
 
     // Clean up the trace to just relevant info
-    const cleanTrace = err.stack
+    const cleanTrace = error.stack
       .split('\n')
       .filter(line => {
         // Comment out the next two lines for full (verbose) stack traces
@@ -107,14 +107,16 @@ const createApp = () => {
     // Colorize and format the output
     console.log(
       magenta(`
-    >>>>> Error: ${err.message} <<<<<
+    >>>>> Error: ${error.message} <<<<<
 
 ${yellow(cleanTrace)}
     `)
     )
 
     // Send back error status
-    res.status(err.status || 500).send(err.message || 'Internal server error.')
+    res
+      .status(error.status || 500)
+      .send(error.message || 'Internal server error.')
   })
 }
 
