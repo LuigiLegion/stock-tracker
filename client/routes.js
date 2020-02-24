@@ -4,7 +4,14 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {Login, Signup, Home, Portfolio, Transactions} from './components'
+import {
+  Login,
+  Signup,
+  Home,
+  Portfolio,
+  Transactions,
+  PageNotFound
+} from './components'
 import {me} from './store'
 
 // Component
@@ -27,6 +34,7 @@ const Routes = ({loadInitialData, isLoggedIn}) => {
           <Route path="/home" component={Home} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/transactions" component={Transactions} />
+          <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       )}
       {/* Displays our Login component as a fallback */}
