@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Component
-export const Transactions = () => {
+const Transactions = () => {
   return <div className="center">TRANSACTIONS</div>
 }
 

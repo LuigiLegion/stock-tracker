@@ -26,6 +26,34 @@ label {
   width: 50%;
 }
 
+.left {
+  text-align: start;
+}
+
+.text-color-red {
+  color: red;
+}
+
+.text-style-bold {
+  font-weight: bold;
+}
+
+.spacer-horizontal {
+  border-bottom: thin solid black;
+  width: 100%;
+  margin: 30px 0px;
+}
+
+.spacer-vertical {
+  border-left: thin solid black;
+  height: 350px;
+  margin-left: 75px;
+}
+
+.page-not-found-message {
+  margin: 30px 0px;
+}
+
 .navbar-container {
   display: flex;
   flex-direction: row;
@@ -46,17 +74,54 @@ label {
   margin: 16px;
 }
 
-.auth-container {
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.auth-containee {
+.form-containee {
   flex: 1;
 }
 
-.text-color-red {
-  color: red;
+.portfolio-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.portfolio-row-containee {
+  flex: 1;
+}
+
+.portfolio-row-stocks-containee {
+  flex: 2;
+}
+
+.portfolio-row-balance-containee {
+  flex: 1;
+}
+
+.portfolio-column-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portfolio-column-containee {
+  flex: 1;
+}
+
+.portfolio-column-stock-containee {
+  flex: 2;
+  text-align: start;
+}
+
+.portfolio-column-price-containee {
+  flex: 1;
+  text-align: end;
 }

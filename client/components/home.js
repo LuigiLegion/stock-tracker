@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Component
-export const Home = () => {
+const Home = () => {
   return <div className="center">HOME</div>
 }
 

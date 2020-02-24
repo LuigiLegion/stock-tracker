@@ -11,7 +11,7 @@ import {logout} from '../store'
 const Navbar = ({isLoggedIn, handleClick}) => {
   return (
     <div className="navbar-container">
-      <h1 className="navbar-logo-containee">Boilermaker</h1>
+      <h1 className="navbar-logo-containee">Stock Tracker</h1>
 
       <nav className="row-links-containee">
         {isLoggedIn ? (

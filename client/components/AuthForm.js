@@ -12,13 +12,13 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
       <h2>{displayName}</h2>
 
       <form
-        className="auth-container center"
+        className="form-container center"
         name={name}
         onSubmit={handleSubmit}
       >
         {displayName === 'Sign Up' ? (
           <Fragment>
-            <div className="auth-containee">
+            <div className="form-containee">
               <label htmlFor="firstName">
                 <small>First Name</small>
               </label>
@@ -26,7 +26,7 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
               <input name="firstName" autoComplete="firstName" type="text" />
             </div>
 
-            <div className="auth-containee">
+            <div className="form-containee">
               <label htmlFor="lastName">
                 <small>Last Name</small>
               </label>
@@ -36,7 +36,7 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
           </Fragment>
         ) : null}
 
-        <div className="auth-containee">
+        <div className="form-containee">
           <label htmlFor="email">
             <small>Email</small>
           </label>
@@ -44,7 +44,7 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
           <input name="email" autoComplete="email" type="text" />
         </div>
 
-        <div className="auth-containee">
+        <div className="form-containee">
           <label htmlFor="password">
             <small>Password</small>
           </label>
@@ -52,7 +52,7 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
           <input name="password" autoComplete="password" type="password" />
         </div>
 
-        <div className="auth-containee">
+        <div className="form-containee">
           <button type="submit">{displayName}</button>
         </div>
 
