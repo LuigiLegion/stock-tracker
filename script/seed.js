@@ -3,7 +3,7 @@
 const {red, green} = require('chalk')
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Portfolio, Transaction} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -24,7 +24,91 @@ async function seed() {
     })
   ])
 
+  const portfolios = await Promise.all([
+    Portfolio.create({
+      userId: 2
+    }),
+    Portfolio.create({
+      userId: 1
+    })
+  ])
+
+  const transactions = await Promise.all([
+    Transaction.create({
+      userId: 1,
+      portfolioId: 1,
+      picker: 'AAPL',
+      quantity: 6,
+      price: 30000
+    }),
+    Transaction.create({
+      userId: 1,
+      portfolioId: 1,
+      picker: 'STWD',
+      quantity: 40,
+      price: 2056
+    }),
+    Transaction.create({
+      userId: 1,
+      portfolioId: 1,
+      picker: 'NFLX',
+      quantity: 86,
+      price: 30000
+    }),
+    Transaction.create({
+      userId: 1,
+      portfolioId: 1,
+      picker: 'MSFT',
+      quantity: 10,
+      price: 2056
+    }),
+    Transaction.create({
+      userId: 1,
+      portfolioId: 1,
+      picker: 'ATT',
+      quantity: 5,
+      price: 30000
+    }),
+    Transaction.create({
+      userId: 2,
+      portfolioId: 2,
+      picker: 'AAPL',
+      quantity: 6,
+      price: 30000
+    }),
+    Transaction.create({
+      userId: 2,
+      portfolioId: 2,
+      picker: 'STWD',
+      quantity: 40,
+      price: 2056
+    }),
+    Transaction.create({
+      userId: 2,
+      portfolioId: 2,
+      picker: 'NFLX',
+      quantity: 86,
+      price: 30000
+    }),
+    Transaction.create({
+      userId: 2,
+      portfolioId: 2,
+      picker: 'MSFT',
+      quantity: 10,
+      price: 2056
+    }),
+    Transaction.create({
+      userId: 2,
+      portfolioId: 2,
+      picker: 'ATT',
+      quantity: 5,
+      price: 30000
+    })
+  ])
+
   console.log(`Seeded ${users.length} Users`)
+  console.log(`Seeded ${portfolios.length} Portfolios`)
+  console.log(`Seeded ${transactions.length} Transactions`)
   console.log(green('Seeded database successfully'))
 }
 
