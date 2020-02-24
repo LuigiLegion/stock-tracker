@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import Spacer from './Spacer'
 
 // Component
-const Portfolio = ({balance}) => {
+const Portfolio = ({balance, handleSubmit}) => {
   const balanceInDollars = (balance / 100).toFixed(2)
 
   return (
@@ -67,11 +67,7 @@ const Portfolio = ({balance}) => {
           </div>
 
           <div className="portfolio-column-containee">
-            <form
-              className="form-container center"
-              name={name}
-              // onSubmit={handleSubmit}
-            >
+            <form className="form-container center" onSubmit={handleSubmit}>
               <div className="form-containee">
                 <label htmlFor="ticker">
                   <small>Ticker</small>
@@ -112,9 +108,27 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Portfolio)
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSubmit(event) {
+      event.preventDefault()
+
+      const ticker = event.target.ticker.value
+      const quantity = event.target.quantity.value
+
+      if (ticker && quantity) {
+        console.log(`Bought ${quantity} ${ticker} stocks successfully`)
+      } else {
+        console.error('Error! Invalid ticker and/or quantity.')
+      }
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)
 
 // Prop Types
 Portfolio.propTypes = {
-  balance: PropTypes.number
+  balance: PropTypes.number,
+  handleSubmit: PropTypes.func
 }
