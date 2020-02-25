@@ -5,25 +5,20 @@ import PropTypes from 'prop-types'
 
 import SingleStock from './SingleStock'
 import Spacer from './Spacer'
+import BuyForm from './BuyForm'
 import {getPortfolioThunkCreator} from '../store/portfolioReducer'
 
 // Component
-const Portfolio = ({
-  balance,
-  value,
-  stocks,
-  getPortfolioThunk,
-  handleSubmit
-}) => {
-  const balanceInDollars = (balance / 100).toFixed(2)
-  const valueInDollars = (value / 100).toFixed(2)
-
+const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
   useEffect(
     () => {
       getPortfolioThunk()
     },
     [getPortfolioThunk]
   )
+
+  const balanceInDollars = (balance / 100).toFixed(2)
+  const valueInDollars = (value / 100).toFixed(2)
 
   return (
     <div className="center">
@@ -48,35 +43,7 @@ const Portfolio = ({
             <span className="text-style-bold">Cash: </span>$ {balanceInDollars}
           </div>
 
-          <div className="portfolio-column-containee">
-            <form className="form-container center" onSubmit={handleSubmit}>
-              <div className="form-containee">
-                <label htmlFor="ticker">
-                  <small>Ticker</small>
-                </label>
-
-                <input name="ticker" autoComplete="ticker" type="text" />
-              </div>
-
-              <div className="form-containee">
-                <label htmlFor="quantity">
-                  <small>Quantity</small>
-                </label>
-
-                <input name="quantity" autoComplete="quantity" type="number" />
-              </div>
-
-              <div>
-                <span className="text-style-bold">Total: </span>$ 0.00
-              </div>
-
-              <div className="form-containee">
-                <button type="submit">Buy</button>
-              </div>
-
-              {/* Insert Error Handling Here */}
-            </form>
-          </div>
+          <BuyForm />
         </div>
       </div>
     </div>
@@ -96,18 +63,6 @@ const mapDispatchToProps = dispatch => {
   return {
     getPortfolioThunk() {
       dispatch(getPortfolioThunkCreator())
-    },
-    handleSubmit(event) {
-      event.preventDefault()
-
-      const ticker = event.target.ticker.value
-      const quantity = event.target.quantity.value
-
-      if (ticker && quantity) {
-        console.log(`Bought ${quantity} ${ticker} stocks successfully`)
-      } else {
-        console.error('Error! Invalid ticker and/or quantity.')
-      }
     }
   }
 }
@@ -119,6 +74,5 @@ Portfolio.propTypes = {
   balance: PropTypes.number,
   value: PropTypes.number,
   stocks: PropTypes.array,
-  getPortfolioThunk: PropTypes.func,
-  handleSubmit: PropTypes.func
+  getPortfolioThunk: PropTypes.func
 }
