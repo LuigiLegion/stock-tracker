@@ -26,14 +26,21 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
 
       <div className="portfolio-row-container">
         <div className="portfolio-row-stocks-containee portfolio-column-container">
-          {stocks.length &&
+          {stocks.length ? (
             stocks.map((curStock, idx) => (
               <Fragment key={curStock.ticker}>
                 <SingleStock stock={curStock} />
 
                 {idx < stocks.length - 1 && <Spacer type="horizontal" />}
               </Fragment>
-            ))}
+            ))
+          ) : (
+            <Fragment>
+              <div>No stocks were found.</div>
+
+              <div>Buy a stock to populate this section.</div>
+            </Fragment>
+          )}
         </div>
 
         <Spacer type="vertical" />
