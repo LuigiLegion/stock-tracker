@@ -21,14 +21,21 @@ const Transactions = ({transactions, getTransactionsThunk}) => {
       <h1 className="left">Transactions</h1>
 
       <div className="transactions-column-container">
-        {transactions.length &&
+        {transactions.length ? (
           transactions.map((curTransaction, idx) => (
             <Fragment key={curTransaction.id}>
               <SingleTransaction transaction={curTransaction} />
 
               {idx < transactions.length - 1 && <Spacer type="horizontal" />}
             </Fragment>
-          ))}
+          ))
+        ) : (
+          <div className="transactions-column-containee left">
+            <div>No transactions were found.</div>
+
+            <div>Buy a stock to populate this section.</div>
+          </div>
+        )}
       </div>
     </div>
   )
