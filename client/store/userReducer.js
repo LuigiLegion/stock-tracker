@@ -2,24 +2,25 @@
 import axios from 'axios'
 
 import history from '../history'
+import {removedPortfolioActionCreator} from './portfolioReducer'
 
 // Action Types
-const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
+const GOT_USER = 'GOT_USER'
+const REMOVED_USER = 'REMOVED_USER'
 
 // Initial State
 const initialState = {}
 
 // Action Creators
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+export const gotUserActionCreator = user => ({type: GOT_USER, user})
+export const removedUserActionCreator = () => ({type: REMOVED_USER})
 
 // Thunk Creators
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get('/auth/me')
+    const {data} = await axios.get('/auth/me')
 
-    dispatch(getUser(res.data || initialState))
+    dispatch(gotUserActionCreator(data || initialState))
   } catch (error) {
     console.error(error)
   }
@@ -42,11 +43,11 @@ export const auth = (
       password
     })
   } catch (authError) {
-    return dispatch(getUser({error: authError}))
+    return dispatch(gotUserActionCreator({error: authError}))
   }
 
   try {
-    dispatch(getUser(res.data))
+    dispatch(gotUserActionCreator(res.data))
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
@@ -57,7 +58,8 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
 
-    dispatch(removeUser())
+    dispatch(removedPortfolioActionCreator())
+    dispatch(removedUserActionCreator())
     history.push('/login')
   } catch (error) {
     console.error(error)
@@ -67,10 +69,10 @@ export const logout = () => async dispatch => {
 // Reducer
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
+    case GOT_USER:
       return action.user
 
-    case REMOVE_USER:
+    case REMOVED_USER:
       return initialState
 
     default:
