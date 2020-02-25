@@ -37,70 +37,70 @@ async function seed() {
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      picker: 'AAPL',
+      ticker: 'AAPL',
       quantity: 6,
       price: 30000
     }),
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      picker: 'STWD',
+      ticker: 'STWD',
       quantity: 40,
       price: 2056
     }),
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      picker: 'NFLX',
+      ticker: 'NFLX',
       quantity: 86,
       price: 30000
     }),
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      picker: 'MSFT',
+      ticker: 'MSFT',
       quantity: 10,
       price: 2056
     }),
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      picker: 'ATT',
+      ticker: 'ATT',
       quantity: 5,
       price: 30000
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      picker: 'AAPL',
+      ticker: 'AAPL',
       quantity: 6,
       price: 30000
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      picker: 'STWD',
+      ticker: 'STWD',
       quantity: 40,
       price: 2056
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      picker: 'NFLX',
+      ticker: 'NFLX',
       quantity: 86,
       price: 30000
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      picker: 'MSFT',
+      ticker: 'MSFT',
       quantity: 10,
       price: 2056
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      picker: 'ATT',
+      ticker: 'ATT',
       quantity: 5,
       price: 30000
     })
