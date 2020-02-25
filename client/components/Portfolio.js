@@ -7,8 +7,9 @@ import Spacer from './Spacer'
 import {getPortfolioThunkCreator} from '../store/portfolioReducer'
 
 // Component
-const Portfolio = ({balance, getPortfolioThunk, handleSubmit}) => {
+const Portfolio = ({balance, value, getPortfolioThunk, handleSubmit}) => {
   const balanceInDollars = (balance / 100).toFixed(2)
+  const valueInDollars = (value / 100).toFixed(2)
 
   useEffect(
     () => {
@@ -19,7 +20,7 @@ const Portfolio = ({balance, getPortfolioThunk, handleSubmit}) => {
 
   return (
     <div className="center">
-      <h1 className="left">Portfolio (TOTAL STOCK VALUE IN $)</h1>
+      <h1 className="left">{`Portfolio ($ ${valueInDollars})`}</h1>
 
       <div className="portfolio-row-container">
         <div className="portfolio-row-stocks-containee portfolio-column-container">
@@ -71,7 +72,7 @@ const Portfolio = ({balance, getPortfolioThunk, handleSubmit}) => {
 
         <div className="portfolio-row-balance-containee portfolio-column-container">
           <div className="portfolio-column-containee">
-            <span className="text-style-bold">Cash: </span>${balanceInDollars}
+            <span className="text-style-bold">Cash: </span>$ {balanceInDollars}
           </div>
 
           <div className="portfolio-column-containee">
@@ -93,7 +94,7 @@ const Portfolio = ({balance, getPortfolioThunk, handleSubmit}) => {
               </div>
 
               <div>
-                <span className="text-style-bold">Total: </span>$0
+                <span className="text-style-bold">Total: </span>$ 0.00
               </div>
 
               <div className="form-containee">
@@ -112,7 +113,8 @@ const Portfolio = ({balance, getPortfolioThunk, handleSubmit}) => {
 // Container
 const mapStateToProps = state => {
   return {
-    balance: state.user.balance
+    balance: state.portfolio.balance,
+    value: state.portfolio.value
   }
 }
 
@@ -141,6 +143,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)
 // Prop Types
 Portfolio.propTypes = {
   balance: PropTypes.number,
+  value: PropTypes.number,
   getPortfolioThunk: PropTypes.func,
   handleSubmit: PropTypes.func
 }
