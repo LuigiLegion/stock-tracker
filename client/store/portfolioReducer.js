@@ -6,7 +6,10 @@ const GOT_PORTFOLIO = 'GOT_PORTFOLIO'
 const REMOVED_PORTFOLIO = 'REMOVED_PORTFOLIO'
 
 // Initial State
-const initialState = {}
+const initialState = {
+  balance: 0,
+  value: 0
+}
 
 // Action Creators
 export const gotPortfolioActionCreator = portfolio => ({
@@ -31,7 +34,11 @@ export const getPortfolioThunkCreator = () => async (dispatch, getState) => {
 export const portfolioReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_PORTFOLIO:
-      return action.portfolio
+      return {
+        ...state,
+        balance: action.portfolio.balance,
+        value: action.portfolio.value
+      }
 
     case REMOVED_PORTFOLIO:
       return initialState
