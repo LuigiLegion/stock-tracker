@@ -1,13 +1,20 @@
 // Imports
-import React, {useEffect} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
+import SingleStock from './SingleStock'
 import Spacer from './Spacer'
 import {getPortfolioThunkCreator} from '../store/portfolioReducer'
 
 // Component
-const Portfolio = ({balance, value, getPortfolioThunk, handleSubmit}) => {
+const Portfolio = ({
+  balance,
+  value,
+  stocks,
+  getPortfolioThunk,
+  handleSubmit
+}) => {
   const balanceInDollars = (balance / 100).toFixed(2)
   const valueInDollars = (value / 100).toFixed(2)
 
@@ -24,48 +31,14 @@ const Portfolio = ({balance, value, getPortfolioThunk, handleSubmit}) => {
 
       <div className="portfolio-row-container">
         <div className="portfolio-row-stocks-containee portfolio-column-container">
-          <div className="portfolio-column-containee portfolio-row-container">
-            <div className="portfolio-column-stock-containee">
-              AAPL - 6 Shares
-            </div>
-            <div className="portfolio-column-price-containee">$2043.09</div>
-          </div>
+          {stocks.length &&
+            stocks.map((curStock, idx) => (
+              <Fragment key={curStock.ticker}>
+                <SingleStock stock={curStock} />
 
-          <Spacer type="horizontal" />
-
-          <div className="portfolio-column-containee portfolio-row-container">
-            <div className="portfolio-column-stock-containee">
-              STWD - 40 Shares
-            </div>
-            <div className="portfolio-column-price-containee">$2043.09</div>
-          </div>
-
-          <Spacer type="horizontal" />
-
-          <div className="portfolio-column-containee portfolio-row-container">
-            <div className="portfolio-column-stock-containee">
-              NFLX - 86 Shares
-            </div>
-            <div className="portfolio-column-price-containee">$2043.09</div>
-          </div>
-
-          <Spacer type="horizontal" />
-
-          <div className="portfolio-column-containee portfolio-row-container">
-            <div className="portfolio-column-stock-containee">
-              MSFT - 10 Shares
-            </div>
-            <div className="portfolio-column-price-containee">$2043.09</div>
-          </div>
-
-          <Spacer type="horizontal" />
-
-          <div className="portfolio-column-containee portfolio-row-container">
-            <div className="portfolio-column-stock-containee">
-              ATT - 5 Shares
-            </div>
-            <div className="portfolio-column-price-containee">$2043.09</div>
-          </div>
+                {idx < stocks.length - 1 && <Spacer type="horizontal" />}
+              </Fragment>
+            ))}
         </div>
 
         <Spacer type="vertical" />
@@ -114,7 +87,8 @@ const Portfolio = ({balance, value, getPortfolioThunk, handleSubmit}) => {
 const mapStateToProps = state => {
   return {
     balance: state.portfolio.balance,
-    value: state.portfolio.value
+    value: state.portfolio.value,
+    stocks: state.portfolio.stocks
   }
 }
 
@@ -144,6 +118,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)
 Portfolio.propTypes = {
   balance: PropTypes.number,
   value: PropTypes.number,
+  stocks: PropTypes.array,
   getPortfolioThunk: PropTypes.func,
   handleSubmit: PropTypes.func
 }
