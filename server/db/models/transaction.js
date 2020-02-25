@@ -5,7 +5,7 @@ const db = require('../db')
 
 // Model
 const Transaction = db.define('transaction', {
-  picker: {
+  ticker: {
     type: Sequelize.STRING,
     allowNull: false
   },
