@@ -51,22 +51,22 @@ async function seed() {
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      ticker: 'NFLX',
-      quantity: 86,
+      ticker: 'AAPL',
+      quantity: 6,
       price: 30000
     }),
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      ticker: 'MSFT',
-      quantity: 10,
+      ticker: 'STWD',
+      quantity: 40,
       price: 2056
     }),
     Transaction.create({
       userId: 1,
       portfolioId: 1,
-      ticker: 'ATT',
-      quantity: 5,
+      ticker: 'AAPL',
+      quantity: 6,
       price: 30000
     }),
     Transaction.create({
@@ -86,22 +86,22 @@ async function seed() {
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      ticker: 'NFLX',
-      quantity: 86,
+      ticker: 'AAPL',
+      quantity: 6,
       price: 30000
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      ticker: 'MSFT',
-      quantity: 10,
+      ticker: 'STWD',
+      quantity: 40,
       price: 2056
     }),
     Transaction.create({
       userId: 2,
       portfolioId: 2,
-      ticker: 'ATT',
-      quantity: 5,
+      ticker: 'AAPL',
+      quantity: 6,
       price: 30000
     })
   ])
