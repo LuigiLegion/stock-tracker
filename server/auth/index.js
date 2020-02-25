@@ -1,8 +1,7 @@
 // Imports
 const router = require('express').Router()
 
-const User = require('../db/models/user')
-const Portfolio = require('../db/models/portfolio')
+const {User, Portfolio} = require('../db/models')
 
 // Middleware
 router.use('/google', require('./google'))
