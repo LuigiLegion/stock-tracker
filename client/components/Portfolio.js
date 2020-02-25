@@ -1,13 +1,21 @@
 // Imports
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Spacer from './Spacer'
+import {getPortfolioThunkCreator} from '../store/portfolioReducer'
 
 // Component
-const Portfolio = ({balance, handleSubmit}) => {
+const Portfolio = ({balance, getPortfolioThunk, handleSubmit}) => {
   const balanceInDollars = (balance / 100).toFixed(2)
+
+  useEffect(
+    () => {
+      getPortfolioThunk()
+    },
+    [getPortfolioThunk]
+  )
 
   return (
     <div className="center">
@@ -110,6 +118,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    getPortfolioThunk() {
+      dispatch(getPortfolioThunkCreator())
+    },
     handleSubmit(event) {
       event.preventDefault()
 
@@ -130,5 +141,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)
 // Prop Types
 Portfolio.propTypes = {
   balance: PropTypes.number,
+  getPortfolioThunk: PropTypes.func,
   handleSubmit: PropTypes.func
 }
