@@ -16,6 +16,7 @@ export const gotPortfolioActionCreator = portfolio => ({
   type: GOT_PORTFOLIO,
   portfolio
 })
+
 export const removedPortfolioActionCreator = () => ({type: REMOVED_PORTFOLIO})
 
 // Thunk Creators
