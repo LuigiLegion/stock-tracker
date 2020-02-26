@@ -51,8 +51,8 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
           <input
             type="email"
             placeholder="Enter Email"
-            name="email"
             autoComplete="email"
+            name="email"
           />
         </div>
 
@@ -64,8 +64,8 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
           <input
             type="password"
             placeholder="Enter Password"
-            name="password"
             autoComplete="password"
+            name="password"
           />
         </div>
 
@@ -79,8 +79,8 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
               <input
                 type="password"
                 placeholder="Re-enter Password"
-                name="passwordValidation"
                 autoComplete="passwordValidation"
+                name="passwordValidation"
               />
             </div>
 
@@ -92,8 +92,8 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
               <input
                 type="text"
                 placeholder="Enter First Name"
-                name="firstName"
                 autoComplete="firstName"
+                name="firstName"
               />
             </div>
 
@@ -105,8 +105,8 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
               <input
                 type="text"
                 placeholder="Enter Last Name"
-                name="lastName"
                 autoComplete="lastName"
+                name="lastName"
               />
             </div>
           </Fragment>
@@ -118,7 +118,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
         {error &&
           error.response && (
-            <div className="text-color-red">{error.response.data}</div>
+            <div className="text-color-red">{`Error! ${
+              error.response.data
+            }.`}</div>
           )}
 
         {passwordValidationError && (
