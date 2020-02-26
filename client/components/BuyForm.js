@@ -13,7 +13,12 @@ const BuyForm = ({handleSubmit}) => {
             <small>Ticker</small>
           </label>
 
-          <input name="ticker" autoComplete="ticker" type="text" />
+          <input
+            type="text"
+            placeholder="Enter Ticker"
+            autoComplete="ticker"
+            name="ticker"
+          />
         </div>
 
         <div className="form-containee">
@@ -21,7 +26,12 @@ const BuyForm = ({handleSubmit}) => {
             <small>Quantity</small>
           </label>
 
-          <input name="quantity" autoComplete="quantity" type="number" />
+          <input
+            type="number"
+            placeholder="Enter Quantity"
+            autoComplete="quantity"
+            name="quantity"
+          />
         </div>
 
         <div>
