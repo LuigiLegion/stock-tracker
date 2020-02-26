@@ -1,7 +1,7 @@
 // Imports
 const router = require('express').Router()
 
-const User = require('../db/models/user')
+const {User, Portfolio} = require('../db/models')
 
 // Middleware
 router.use('/google', require('./google'))
@@ -15,6 +15,7 @@ router.post('/signup', async (req, res, next) => {
   try {
     const {firstName, lastName, email, password} = req.body
     const user = await User.create({firstName, lastName, email, password})
+    const portfolio = await Portfolio.create({userId: user.id})
     req.login(user, error => (error ? next(error) : res.json(user)))
   } catch (error) {
     if (error.name === 'SequelizeUniqueConstraintError') {

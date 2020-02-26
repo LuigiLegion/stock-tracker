@@ -1,12 +1,39 @@
 // Imports
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import {auth} from '../store'
 
 // Component
-const AuthForm = ({name, displayName, error, handleSubmit}) => {
+const AuthForm = ({name, displayName, error, authThunk}) => {
+  const [passwordValidationError, setPasswordValidationError] = useState(false)
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    const formName = event.target.name
+    const email = event.target.email.value
+    const password = event.target.password.value
+    const passwordValidation = event.target.passwordValidation
+      ? event.target.passwordValidation.value
+      : null
+    const firstName = event.target.firstName
+      ? event.target.firstName.value
+      : null
+    const lastName = event.target.lastName ? event.target.lastName.value : null
+
+    if (
+      formName === 'login' ||
+      (formName === 'signup' && password === passwordValidation)
+    ) {
+      setPasswordValidationError(false)
+      authThunk(formName, email, password, firstName, lastName)
+    } else {
+      setPasswordValidationError(true)
+    }
+  }
+
   return (
     <div className="center">
       <h2>{displayName}</h2>
@@ -16,32 +43,17 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
         name={name}
         onSubmit={handleSubmit}
       >
-        {displayName === 'Sign Up' ? (
-          <Fragment>
-            <div className="form-containee">
-              <label htmlFor="firstName">
-                <small>First Name</small>
-              </label>
-
-              <input name="firstName" autoComplete="firstName" type="text" />
-            </div>
-
-            <div className="form-containee">
-              <label htmlFor="lastName">
-                <small>Last Name</small>
-              </label>
-
-              <input name="lastName" autoComplete="lastName" type="text" />
-            </div>
-          </Fragment>
-        ) : null}
-
         <div className="form-containee">
           <label htmlFor="email">
             <small>Email</small>
           </label>
 
-          <input name="email" autoComplete="email" type="text" />
+          <input
+            type="email"
+            placeholder="Enter Email"
+            autoComplete="email"
+            name="email"
+          />
         </div>
 
         <div className="form-containee">
@@ -49,8 +61,56 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
             <small>Password</small>
           </label>
 
-          <input name="password" autoComplete="password" type="password" />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            autoComplete="password"
+            name="password"
+          />
         </div>
+
+        {name === 'signup' ? (
+          <Fragment>
+            <div className="form-containee">
+              <label htmlFor="passwordValidation">
+                <small>Password Validation</small>
+              </label>
+
+              <input
+                type="password"
+                placeholder="Re-enter Password"
+                autoComplete="passwordValidation"
+                name="passwordValidation"
+              />
+            </div>
+
+            <div className="form-containee">
+              <label htmlFor="firstName">
+                <small>First Name</small>
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter First Name"
+                autoComplete="firstName"
+                name="firstName"
+              />
+            </div>
+
+            <div className="form-containee">
+              <label htmlFor="lastName">
+                <small>Last Name</small>
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter Last Name"
+                autoComplete="lastName"
+                name="lastName"
+              />
+            </div>
+          </Fragment>
+        ) : null}
 
         <div className="form-containee">
           <button type="submit">{displayName}</button>
@@ -58,8 +118,16 @@ const AuthForm = ({name, displayName, error, handleSubmit}) => {
 
         {error &&
           error.response && (
-            <div className="text-color-red"> {error.response.data} </div>
+            <div className="text-color-red">{`Error! ${
+              error.response.data
+            }.`}</div>
           )}
+
+        {passwordValidationError && (
+          <div className="text-color-red">
+            Error! Please re-enter your password.
+          </div>
+        )}
       </form>
 
       <div className="center">
@@ -94,20 +162,8 @@ const mapSignupToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit(event) {
-      event.preventDefault()
-
-      const firstName = event.target.firstName
-        ? event.target.firstName.value
-        : null
-      const lastName = event.target.lastName
-        ? event.target.lastName.value
-        : null
-      const email = event.target.email.value
-      const password = event.target.password.value
-      const formName = event.target.name
-
-      dispatch(auth(firstName, lastName, email, password, formName))
+    authThunk(formName, email, password, firstName, lastName) {
+      dispatch(auth(formName, email, password, firstName, lastName))
     }
   }
 }
@@ -120,5 +176,5 @@ AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   error: PropTypes.object,
-  handleSubmit: PropTypes.func.isRequired
+  authThunk: PropTypes.func.isRequired
 }

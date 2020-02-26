@@ -1,45 +1,64 @@
 // Imports
-import React from 'react'
+import React, {Fragment, useEffect} from 'react'
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 
+import SingleTransaction from './SingleTransaction'
 import Spacer from './Spacer'
+import {getTransactionsThunkCreator} from '../store/transactionsReducer'
 
 // Component
-const Transactions = () => {
+const Transactions = ({transactions, getTransactionsThunk}) => {
+  useEffect(
+    () => {
+      getTransactionsThunk()
+    },
+    [getTransactionsThunk]
+  )
+
   return (
     <div className="center">
       <h1 className="left">Transactions</h1>
 
       <div className="transactions-column-container">
-        <div className="transactions-column-containee">
-          BUY (AAPL) - 6 Shares @ $300.00/Share
-        </div>
+        {transactions.length ? (
+          transactions.map((curTransaction, idx) => (
+            <Fragment key={curTransaction.id}>
+              <SingleTransaction transaction={curTransaction} />
 
-        <Spacer type="horizontal" />
+              {idx < transactions.length - 1 && <Spacer type="horizontal" />}
+            </Fragment>
+          ))
+        ) : (
+          <div className="transactions-column-containee left">
+            <div>No transactions were found.</div>
 
-        <div className="transactions-column-containee">
-          BUY (STWD) - 40 Shares @ $20.56/Share
-        </div>
-
-        <Spacer type="horizontal" />
-
-        <div className="transactions-column-containee">
-          BUY (NFLX) - 86 @ $300.00/Share
-        </div>
-
-        <Spacer type="horizontal" />
-
-        <div className="transactions-column-containee">
-          BUY (MSFT) - 10 Shares @ $20.56/Share
-        </div>
-
-        <Spacer type="horizontal" />
-
-        <div className="transactions-column-containee">
-          BUY (ATT) - 5 Shares @ $300.00/Share
-        </div>
+            <div>Buy a stock to populate this section.</div>
+          </div>
+        )}
       </div>
     </div>
   )
 }
+// Container
+const mapStateToProps = state => {
+  return {
+    transactions: state.transactions
+  }
+}
 
-export default Transactions
+const mapDispatchToProps = dispatch => {
+  return {
+    getTransactionsThunk() {
+      dispatch(getTransactionsThunkCreator())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Transactions)
+
+// Prop Types
+Transactions.propTypes = {
+  transactions: PropTypes.array,
+  getTransactionsThunk: PropTypes.func
+}
