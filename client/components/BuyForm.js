@@ -34,8 +34,10 @@ const BuyForm = ({handleSubmit}) => {
           />
         </div>
 
-        <div>
-          <span className="text-style-bold">Total: </span>$ 0.00
+        <div className="form-containee">
+          <span className="text-style-bold">Total: </span>
+
+          <span>$ 0.00</span>
         </div>
 
         <div className="form-containee">

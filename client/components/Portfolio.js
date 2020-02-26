@@ -47,7 +47,9 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
 
         <div className="portfolio-row-balance-containee portfolio-column-container">
           <div className="portfolio-column-containee">
-            <span className="text-style-bold">Cash: </span>$ {balanceInDollars}
+            <span className="text-style-bold">Cash: </span>
+
+            <span>$ {balanceInDollars}</span>
           </div>
 
           <BuyForm />
