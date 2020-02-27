@@ -36,13 +36,18 @@ router.get('/:userId', async (req, res, next) => {
     const stocks = []
     for (let ticker in stocksQuantity) {
       if (stocksQuantity.hasOwnProperty(ticker)) {
-        const {latestPrice} = await getQuote(ticker)
+        // Open price is always being fetched as null
+        // for some reason, so I had to opt for the
+        // previous close price and treat it as open
+        const {latestPrice, previousClose} = await getQuote(ticker)
         const latestPriceInCents = latestPrice * 100
+        const previousCloseInCents = previousClose * 100
 
         const stock = {
           ticker,
           quantity: stocksQuantity[ticker],
           price: latestPriceInCents,
+          open: previousCloseInCents,
           value: stocksQuantity[ticker] * latestPriceInCents
         }
 
