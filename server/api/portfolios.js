@@ -24,6 +24,8 @@ router.get('/:userId', async (req, res, next) => {
       include: [
         {
           model: Transaction,
+          separate: true,
+          order: [['ticker', 'ASC']],
           attributes: ['ticker', 'quantity', 'price']
         }
       ]
