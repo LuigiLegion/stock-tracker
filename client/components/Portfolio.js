@@ -7,6 +7,7 @@ import SingleStock from './SingleStock'
 import Spacer from './Spacer'
 import BuyForm from './BuyForm'
 import {getPortfolioThunkCreator} from '../store/portfolioReducer'
+import {toDollars} from '../helpers'
 
 // Component
 const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
@@ -17,8 +18,8 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
     [getPortfolioThunk]
   )
 
-  const balanceInDollars = (balance / 100).toFixed(2)
-  const valueInDollars = (value / 100).toFixed(2)
+  const balanceInDollars = toDollars(balance)
+  const valueInDollars = toDollars(value)
 
   return (
     <div className="center">

@@ -1,5 +1,6 @@
 // Imports
-const getQuote = require('./getQuote')
+const getQuote = require('./fetchers/getQuote')
+const toCents = require('./converters/toCents')
 
 // Exports
-module.exports = {getQuote}
+module.exports = {getQuote, toCents}

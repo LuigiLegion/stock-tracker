@@ -12,6 +12,10 @@ nav a {
   margin: 1em;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 form div {
   display: inline-block;
   margin: 1em;
@@ -33,6 +37,18 @@ label {
 
 .text-color-red {
   color: red;
+}
+
+.background-color-red {
+  background: red;
+}
+
+.background-color-green {
+  background: green;
+}
+
+.background-color-gray {
+  background: gray;
 }
 
 .text-style-bold {
@@ -138,4 +154,8 @@ label {
 .transactions-column-containee {
   flex: 1;
   align-self: flex-start;
+}
+
+.transaction-details {
+  margin: 1em;
 }
