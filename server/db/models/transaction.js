@@ -13,14 +13,14 @@ const Transaction = db.define('transaction', {
     }
   },
   quantity: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DOUBLE.UNSIGNED.ZEROFILL,
     allowNull: false,
     validate: {
       min: 1
     }
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DOUBLE.UNSIGNED.ZEROFILL,
     allowNull: false,
     validate: {
       min: 1
