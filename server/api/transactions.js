@@ -29,8 +29,6 @@ router.post('/', async (req, res, next) => {
     // and assign it to the transaction variable initialized above
     if (typeof data === 'object') {
       const latestPriceInCents = data.latestPrice * 100
-      const previousCloseInCents = data.previousClose * 100
-
       const totalPrice = latestPriceInCents * Number(quantity)
       const newBalance = balance - totalPrice
 
@@ -45,7 +43,7 @@ router.post('/', async (req, res, next) => {
         })
 
         // Update balance in user portfolio based on total cost of purchase
-        const [_, portfolio] = await Portfolio.update(
+        await Portfolio.update(
           {balance: newBalance},
           {
             where: {
