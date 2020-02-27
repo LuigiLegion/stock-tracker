@@ -14,11 +14,10 @@ const BuyForm = ({makeTransactionThunk}) => {
     const quantity = event.target.quantity.value
 
     if (ticker && quantity) {
-      console.log(`Bought ${quantity} ${ticker} stocks successfully`)
-
       makeTransactionThunk(ticker, quantity)
     } else {
-      console.error('Error! Invalid ticker and/or quantity.')
+      // Replace with toast notification
+      console.error('Error! Invalid ticker and/or quantity')
     }
   }
 
@@ -51,11 +50,11 @@ const BuyForm = ({makeTransactionThunk}) => {
           />
         </div>
 
-        <div className="form-containee">
+        {/* <div className="form-containee">
           <span className="text-style-bold">Total: </span>
 
           <span>$ 0.00</span>
-        </div>
+        </div> */}
 
         <div className="form-containee">
           <button type="submit">Buy</button>
