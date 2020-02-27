@@ -1,6 +1,7 @@
 // Imports
 const router = require('express').Router()
 
+// Models
 const {User, Portfolio, Transaction} = require('../db/models')
 
 // Routes
