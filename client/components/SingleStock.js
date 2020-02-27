@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import {toDollars} from '../helpers'
+
 const SingleStock = ({stock}) => {
   const {ticker, quantity, price, open, value} = stock
-  const valueInDollars = (value / 100).toFixed(2)
+  const valueInDollars = toDollars(value)
 
   let color = 'grey'
   if (price > open) {
