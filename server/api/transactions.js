@@ -1,20 +1,27 @@
 // Imports
 const router = require('express').Router()
-const iex = require('iexcloud_api_wrapper')
+const {getQuote} = require('../helpers')
 
+// Models
 const {Transaction, Portfolio} = require('../db/models')
 
-// Helpers
-const getQuote = async ticker => {
-  try {
-    const data = await iex.quote(ticker)
-    return data
-  } catch (error) {
-    return error.response.data
-  }
-}
-
 // Routes
+router.get('/:userId', async (req, res, next) => {
+  const {userId} = req.params
+
+  try {
+    const transactions = await Transaction.findAll({
+      where: {userId},
+      order: [['createdAt', 'DESC']],
+      attributes: ['id', 'ticker', 'quantity', 'price', 'createdAt']
+    })
+
+    res.send(transactions)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   const {userId, portfolioId, balance, ticker, quantity} = req.body
 
@@ -29,8 +36,6 @@ router.post('/', async (req, res, next) => {
     // and assign it to the transaction variable initialized above
     if (typeof data === 'object') {
       const latestPriceInCents = data.latestPrice * 100
-      const previousCloseInCents = data.previousClose * 100
-
       const totalPrice = latestPriceInCents * Number(quantity)
       const newBalance = balance - totalPrice
 
@@ -45,14 +50,12 @@ router.post('/', async (req, res, next) => {
         })
 
         // Update balance in user portfolio based on total cost of purchase
-        const [_, portfolio] = await Portfolio.update(
+        await Portfolio.update(
           {balance: newBalance},
           {
             where: {
               id: portfolioId
-            },
-            returning: true,
-            individualHooks: true
+            }
           }
         )
       } else {

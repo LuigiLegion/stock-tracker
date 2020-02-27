@@ -25,6 +25,14 @@ const Navbar = ({isLoggedIn, handleClick}) => {
 
             <Link to="/transactions">Transactions</Link>
 
+            <a
+              href="https://github.com/LuigiLegion/stock-tracker"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source
+            </a>
+
             <a href="#" onClick={handleClick}>
               Logout
             </a>
@@ -33,6 +41,14 @@ const Navbar = ({isLoggedIn, handleClick}) => {
           <div>
             {/* The navbar will show these links before you log in */}
             <Hello />
+
+            <a
+              href="https://github.com/LuigiLegion/stock-tracker"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source
+            </a>
 
             <Link to="/login">Login</Link>
 
