@@ -12,7 +12,7 @@ const SingleTransaction = ({transaction}) => {
         {`BUY (${ticker}) - ${quantity} Shares @ $ ${priceInDollars}/Share`}
       </div>
 
-      <div>{`Date of purchase - (${transactionDate})`}</div>
+      <div>{`Date of Purchase - (${transactionDate})`}</div>
     </div>
   )
 }
