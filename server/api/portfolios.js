@@ -1,18 +1,9 @@
 // Imports
 const router = require('express').Router()
-const iex = require('iexcloud_api_wrapper')
+const {getQuote} = require('../helpers')
 
+// Models
 const {Portfolio, Transaction} = require('../db/models')
-
-// Helpers
-const getQuote = async ticker => {
-  try {
-    const data = await iex.quote(ticker)
-    return data
-  } catch (error) {
-    return error.response.data
-  }
-}
 
 // Routes
 router.get('/:userId', async (req, res, next) => {
