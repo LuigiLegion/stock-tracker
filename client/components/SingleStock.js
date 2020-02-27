@@ -16,7 +16,7 @@ const SingleStock = ({stock}) => {
 
   return (
     <div
-      className={`portfolio-column-containee portfolio-row-container background-color-${color}`}
+      className={`portfolio-column-containee portfolio-row-container stock-details background-color-${color}`}
     >
       <div className="portfolio-column-stock-containee">{`${ticker} - ${quantity} Shares`}</div>
 

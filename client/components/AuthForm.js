@@ -39,7 +39,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
       <h2>{displayName}</h2>
 
       <form
-        className="form-container center"
+        className="center auth-form-container"
         name={name}
         onSubmit={handleSubmit}
       >
@@ -139,8 +139,10 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
           </Fragment>
         ) : null}
 
-        <div className="form-containee">
-          <button type="submit">{displayName}</button>
+        <div className="form-btn-containee">
+          <button className="btn" type="submit">
+            <span>{displayName}</span>
+          </button>
         </div>
 
         {error &&
@@ -157,7 +159,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
         )}
       </form>
 
-      <div className="center">
+      <div className="center google-oauth">
         <a href="/auth/google">{displayName} with Google</a>
       </div>
     </div>

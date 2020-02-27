@@ -30,7 +30,7 @@ const Transactions = ({transactions, getTransactionsThunk}) => {
             </Fragment>
           ))
         ) : (
-          <div className="transactions-column-containee left">
+          <div className="left transactions-column-message-containee">
             <div>No transactions were found.</div>
 
             <div>Buy a stock to populate this section.</div>
