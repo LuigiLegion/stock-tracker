@@ -13,19 +13,13 @@ const BuyForm = ({makeTransactionThunk}) => {
     const ticker = event.target.ticker.value
     const quantity = event.target.quantity.value
 
-    if (ticker && quantity) {
-      const buyConfirmation = window.confirm(
-        `Are you sure you want to buy ${quantity} ${ticker} ${
-          quantity > 1 ? 'shares' : 'share'
-        }?`
-      )
-
-      if (buyConfirmation) {
-        makeTransactionThunk(ticker, quantity)
-      }
-    } else {
-      // Replace with toast notification
-      console.error('Error! Invalid ticker and/or quantity')
+    const buyConfirmation = window.confirm(
+      `Are you sure you want to buy ${quantity} ${ticker} ${
+        quantity > 1 ? 'shares' : 'share'
+      }?`
+    )
+    if (buyConfirmation) {
+      makeTransactionThunk(ticker, quantity)
     }
   }
 
@@ -42,6 +36,9 @@ const BuyForm = ({makeTransactionThunk}) => {
             placeholder="Enter Ticker"
             autoComplete="ticker"
             name="ticker"
+            minLength="1"
+            maxLength="4"
+            required
           />
         </div>
 
@@ -56,20 +53,13 @@ const BuyForm = ({makeTransactionThunk}) => {
             autoComplete="quantity"
             name="quantity"
             min="1"
+            required
           />
         </div>
-
-        {/* <div className="form-containee">
-          <span className="text-style-bold">Total: </span>
-
-          <span>$ 0.00</span>
-        </div> */}
 
         <div className="form-containee">
           <button type="submit">Buy</button>
         </div>
-
-        {/* Insert Error Handling Here */}
       </form>
     </div>
   )
