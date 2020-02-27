@@ -6,6 +6,22 @@ const {getQuote} = require('../helpers')
 const {Transaction, Portfolio} = require('../db/models')
 
 // Routes
+router.get('/:userId', async (req, res, next) => {
+  const {userId} = req.params
+
+  try {
+    const transactions = await Transaction.findAll({
+      where: {userId},
+      order: [['createdAt', 'DESC']],
+      attributes: ['id', 'ticker', 'quantity', 'price', 'createdAt']
+    })
+
+    res.send(transactions)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   const {userId, portfolioId, balance, ticker, quantity} = req.body
 
@@ -39,9 +55,7 @@ router.post('/', async (req, res, next) => {
           {
             where: {
               id: portfolioId
-            },
-            returning: true,
-            individualHooks: true
+            }
           }
         )
       } else {
