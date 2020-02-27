@@ -45,7 +45,11 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
       >
         <div className="form-containee">
           <label htmlFor="email">
-            <small>Email</small>
+            <small>
+              <span>Email</span>
+
+              <span className="text-color-red">*</span>
+            </small>
           </label>
 
           <input
@@ -53,12 +57,17 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
             placeholder="Enter Email"
             autoComplete="email"
             name="email"
+            required
           />
         </div>
 
         <div className="form-containee">
           <label htmlFor="password">
-            <small>Password</small>
+            <small>
+              <span>Password</span>
+
+              <span className="text-color-red">*</span>
+            </small>
           </label>
 
           <input
@@ -66,6 +75,8 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
             placeholder="Enter Password"
             autoComplete="password"
             name="password"
+            minLength="3"
+            required
           />
         </div>
 
@@ -73,7 +84,11 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
           <Fragment>
             <div className="form-containee">
               <label htmlFor="passwordValidation">
-                <small>Password Validation</small>
+                <small>
+                  <span>Password Validation</span>
+
+                  <span className="text-color-red">*</span>
+                </small>
               </label>
 
               <input
@@ -81,12 +96,18 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
                 placeholder="Re-enter Password"
                 autoComplete="passwordValidation"
                 name="passwordValidation"
+                minLength="3"
+                required
               />
             </div>
 
             <div className="form-containee">
               <label htmlFor="firstName">
-                <small>First Name</small>
+                <small>
+                  <span>First Name</span>
+
+                  <span className="text-color-red">*</span>
+                </small>
               </label>
 
               <input
@@ -94,12 +115,17 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
                 placeholder="Enter First Name"
                 autoComplete="firstName"
                 name="firstName"
+                required
               />
             </div>
 
             <div className="form-containee">
               <label htmlFor="lastName">
-                <small>Last Name</small>
+                <small>
+                  <span>Last Name</span>
+
+                  <span className="text-color-red">*</span>
+                </small>
               </label>
 
               <input
@@ -107,6 +133,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
                 placeholder="Enter Last Name"
                 autoComplete="lastName"
                 name="lastName"
+                required
               />
             </div>
           </Fragment>
