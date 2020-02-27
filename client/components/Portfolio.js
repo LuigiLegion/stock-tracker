@@ -14,6 +14,12 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
   useEffect(
     () => {
       getPortfolioThunk()
+
+      const token = setInterval(() => getPortfolioThunk(), 60000)
+
+      return () => {
+        clearInterval(token)
+      }
     },
     [getPortfolioThunk]
   )
@@ -23,7 +29,7 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
 
   return (
     <div className="center">
-      <h1 className="left">{`Portfolio ($ ${valueInDollars})`}</h1>
+      <h1 className="left">{`Portfolio (Value: $ ${valueInDollars})`}</h1>
 
       <div className="portfolio-row-container">
         <div className="portfolio-row-stocks-containee portfolio-column-container">
@@ -47,7 +53,7 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
         <Spacer type="vertical" />
 
         <div className="portfolio-row-balance-containee portfolio-column-container">
-          <div className="portfolio-column-containee">
+          <div className="portfolio-column-containee cash-details">
             <span className="text-style-bold">Cash: </span>
 
             <span>$ {balanceInDollars}</span>
