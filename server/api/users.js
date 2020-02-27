@@ -30,9 +30,11 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
+  const {userId} = req.params
+
   try {
-    const user = await User.findByPk(req.params.id, {
+    const user = await User.findByPk(userId, {
       // Explicitly select only the id, googleId, firstName, lastName,
       // and email fields - even though users' passwords are encrypted,
       // it won't help if we just send everything to anyone who asks!
