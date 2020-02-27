@@ -26,47 +26,9 @@ export const getPortfolioThunkCreator = () => async (dispatch, getState) => {
   try {
     const {id} = getState().user
 
-    const {data} = await axios.get(`/api/users/${id}`)
+    const {data} = await axios.get(`/api/portfolios/${id}`)
 
-    const stocksQuantity = data.transactions.reduce((acc, curTransaction) => {
-      if (acc[curTransaction.ticker]) {
-        acc[curTransaction.ticker] =
-          acc[curTransaction.ticker] + curTransaction.quantity
-      } else {
-        acc[curTransaction.ticker] = curTransaction.quantity
-      }
-
-      return acc
-    }, {})
-
-    const stocks = []
-    for (let key in stocksQuantity) {
-      if (stocksQuantity.hasOwnProperty(key)) {
-        const price = 100000
-        const stock = {
-          ticker: key,
-          quantity: stocksQuantity[key],
-          price,
-          value: stocksQuantity[key] * price
-        }
-
-        stocks.push(stock)
-      }
-    }
-
-    const stocksTotalValue = stocks.reduce(
-      (acc, curStock) => acc + curStock.value,
-      0
-    )
-
-    const portfolio = {
-      id: data.portfolio.id,
-      balance: data.portfolio.balance,
-      value: stocksTotalValue,
-      stocks
-    }
-
-    dispatch(gotPortfolioActionCreator(portfolio || initialState))
+    dispatch(gotPortfolioActionCreator(data || initialState))
   } catch (error) {
     console.error(error)
   }
