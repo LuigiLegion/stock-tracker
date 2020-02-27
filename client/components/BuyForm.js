@@ -28,7 +28,11 @@ const BuyForm = ({makeTransactionThunk}) => {
       <form className="form-container center" onSubmit={handleSubmit}>
         <div className="form-containee">
           <label htmlFor="ticker">
-            <small>Ticker</small>
+            <small>
+              <span>Ticker</span>
+
+              <span className="text-color-red">*</span>
+            </small>
           </label>
 
           <input
@@ -36,7 +40,6 @@ const BuyForm = ({makeTransactionThunk}) => {
             placeholder="Enter Ticker"
             autoComplete="ticker"
             name="ticker"
-            minLength="1"
             maxLength="4"
             required
           />
@@ -44,7 +47,11 @@ const BuyForm = ({makeTransactionThunk}) => {
 
         <div className="form-containee">
           <label htmlFor="quantity">
-            <small>Quantity</small>
+            <small>
+              <span>Quantity</span>
+
+              <span className="text-color-red">*</span>
+            </small>
           </label>
 
           <input
