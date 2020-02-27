@@ -1,6 +1,8 @@
 // Imports
 import axios from 'axios'
 
+import {getPortfolioThunkCreator} from './portfolioReducer'
+
 // Action Types
 const GOT_TRANSACTIONS = 'GOT_TRANSACTIONS'
 const MADE_TRANSACTION = 'MADE_TRANSACTION'
@@ -43,19 +45,28 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
 ) => {
   try {
     const userId = getState().user.id
-    const {id, balance} = getState().portfolio.id
+    const {id, balance} = getState().portfolio
 
-    const {data} = await axios.post('/api/transactions', {
+    const transactionData = {
       userId,
       portfolioId: id,
       balance,
       ticker,
       quantity
-    })
+    }
 
-    console.log({data})
+    const {data} = await axios.post('/api/transactions', transactionData)
 
     dispatch(madeTransactionActionCreator(data))
+
+    if (data.error) {
+      // Replace with toast notification
+      console.error(data.error)
+    } else {
+      dispatch(getPortfolioThunkCreator())
+      // Replace with toast notification
+      console.log('Purchase Succesful.')
+    }
   } catch (error) {
     console.error(error)
   }
