@@ -1,8 +1,18 @@
 // Imports
 const router = require('express').Router()
-const axios = require('axios')
+const iex = require('iexcloud_api_wrapper')
 
 const {Transaction, Portfolio} = require('../db/models')
+
+// Helpers
+const getQuote = async ticker => {
+  try {
+    const data = await iex.quote(ticker)
+    return data
+  } catch (error) {
+    return error.response.data
+  }
+}
 
 // Routes
 router.post('/', async (req, res, next) => {
@@ -10,39 +20,54 @@ router.post('/', async (req, res, next) => {
 
   try {
     // Get current price of stock by ticker from 3rd party API
-    let price
+    const data = await getQuote(ticker)
 
-    const totalPrice = price * quantity
-    const newBalance = balance - totalPrice
+    let transaction
 
-    if (newBalance > 0) {
-      // Create transaction based on userId, ticker, quantity, and current price
-      const transaction = await Transaction.create({
-        userId,
-        portfolioId,
-        ticker,
-        quantity,
-        price
-      })
+    // If ticker represents a valid stock, attemp to create transaction
+    // based on userId, portfolioId, ticker, quantity, and latest price,
+    // and assign it to the transaction variable initialized above
+    if (typeof data === 'object') {
+      const latestPriceInCents = data.latestPrice * 100
+      const previousCloseInCents = data.previousClose * 100
 
-      // Update balance in user portfolio based on total cost of purchase
-      const [_, portfolio] = await Portfolio.update(
-        {balance: newBalance},
-        {
-          where: {
-            id: portfolioId
-          },
-          returning: true,
-          individualHooks: true
-        }
-      )
+      const totalPrice = latestPriceInCents * Number(quantity)
+      const newBalance = balance - totalPrice
 
-      console.log({portfolio})
+      // If the user can afford the purchase, create the transaction
+      if (newBalance > 0) {
+        transaction = await Transaction.create({
+          userId,
+          portfolioId,
+          ticker,
+          quantity,
+          price: latestPriceInCents
+        })
 
-      res.json(transaction)
+        // Update balance in user portfolio based on total cost of purchase
+        const [_, portfolio] = await Portfolio.update(
+          {balance: newBalance},
+          {
+            where: {
+              id: portfolioId
+            },
+            returning: true,
+            individualHooks: true
+          }
+        )
+      } else {
+        // If user can't afford the purchase, assign an object carrying the
+        // error message to the transaction variable initialized above
+        transaction = {error: `Error! Insufficient funds`}
+      }
     } else {
-      res.json('Error! Not enough cash to complete transaction.')
+      // If ticker does not represent a valid ticker, assign an object
+      // carrying the error message to the transaction variable
+      // initialized above
+      transaction = {error: `Error! ${data}`}
     }
+
+    res.send(transaction)
   } catch (error) {
     next(error)
   }
