@@ -22,18 +22,18 @@ export const madeTransactionActionCreator = transaction => ({
   transaction
 })
 
-export const removedPortfolioActionCreator = () => ({
+export const removedTransactionsActionCreator = () => ({
   type: REMOVED_TRANSACTIONS
 })
 
 // Thunk Creators
 export const getTransactionsThunkCreator = () => async (dispatch, getState) => {
-  const {id} = getState().user
-
   try {
-    const {data} = await axios.get(`/api/users/${id}`)
+    const {id} = getState().user
 
-    dispatch(gotTransactionsActionCreator(data.transactions || initialState))
+    const {data} = await axios.get(`/api/transactions/${id}`)
+
+    dispatch(gotTransactionsActionCreator(data || initialState))
   } catch (error) {
     console.error(error)
   }
