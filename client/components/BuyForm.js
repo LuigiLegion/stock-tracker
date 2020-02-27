@@ -14,7 +14,15 @@ const BuyForm = ({makeTransactionThunk}) => {
     const quantity = event.target.quantity.value
 
     if (ticker && quantity) {
-      makeTransactionThunk(ticker, quantity)
+      const buyConfirmation = window.confirm(
+        `Are you sure you want to buy ${quantity} ${ticker} ${
+          quantity > 1 ? 'shares' : 'share'
+        }?`
+      )
+
+      if (buyConfirmation) {
+        makeTransactionThunk(ticker, quantity)
+      }
     } else {
       // Replace with toast notification
       console.error('Error! Invalid ticker and/or quantity')
