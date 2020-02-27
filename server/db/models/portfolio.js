@@ -6,14 +6,14 @@ const db = require('../db')
 // Model
 const Portfolio = db.define('portfolio', {
   balance: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DOUBLE.UNSIGNED.ZEROFILL,
     defaultValue: 500000,
     validate: {
       min: 0
     }
   },
   value: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DOUBLE.UNSIGNED.ZEROFILL,
     defaultValue: 0,
     validate: {
       min: 0

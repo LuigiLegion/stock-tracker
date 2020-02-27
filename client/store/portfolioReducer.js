@@ -7,6 +7,7 @@ const REMOVED_PORTFOLIO = 'REMOVED_PORTFOLIO'
 
 // Initial State
 const initialState = {
+  id: 0,
   balance: 0,
   value: 0,
   stocks: []
@@ -22,8 +23,9 @@ export const removedPortfolioActionCreator = () => ({type: REMOVED_PORTFOLIO})
 
 // Thunk Creators
 export const getPortfolioThunkCreator = () => async (dispatch, getState) => {
-  const {id} = getState().user
   try {
+    const {id} = getState().user
+
     const {data} = await axios.get(`/api/users/${id}`)
 
     const stocksQuantity = data.transactions.reduce((acc, curTransaction) => {
@@ -58,6 +60,7 @@ export const getPortfolioThunkCreator = () => async (dispatch, getState) => {
     )
 
     const portfolio = {
+      id: data.portfolio.id,
       balance: data.portfolio.balance,
       value: stocksTotalValue,
       stocks
@@ -75,6 +78,7 @@ export const portfolioReducer = (state = initialState, action) => {
     case GOT_PORTFOLIO:
       return {
         ...state,
+        id: action.portfolio.id,
         balance: action.portfolio.balance,
         value: action.portfolio.value,
         stocks: action.portfolio.stocks

@@ -18,7 +18,9 @@ router.get('/', async (req, res, next) => {
         },
         {
           model: Transaction,
-          attributes: ['id', 'ticker', 'quantity', 'price']
+          separate: true,
+          order: [['createdAt', 'DESC']],
+          attributes: ['id', 'ticker', 'quantity', 'price', 'createdAt']
         }
       ]
     })
@@ -42,7 +44,9 @@ router.get('/:id', async (req, res, next) => {
         },
         {
           model: Transaction,
-          attributes: ['id', 'ticker', 'quantity', 'price']
+          separate: true,
+          order: [['createdAt', 'DESC']],
+          attributes: ['id', 'ticker', 'quantity', 'price', 'createdAt']
         }
       ]
     })

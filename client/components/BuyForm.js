@@ -3,8 +3,24 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
+import {makeTransactionThunkCreator} from '../store/transactionsReducer'
+
 // Component
-const BuyForm = ({handleSubmit}) => {
+const BuyForm = ({makeTransactionThunk}) => {
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    const ticker = event.target.ticker.value
+    const quantity = event.target.quantity.value
+
+    if (ticker && quantity) {
+      makeTransactionThunk(ticker, quantity)
+    } else {
+      // Replace with toast notification
+      console.error('Error! Invalid ticker and/or quantity')
+    }
+  }
+
   return (
     <div className="portfolio-column-containee">
       <form className="form-container center" onSubmit={handleSubmit}>
@@ -34,11 +50,11 @@ const BuyForm = ({handleSubmit}) => {
           />
         </div>
 
-        <div className="form-containee">
+        {/* <div className="form-containee">
           <span className="text-style-bold">Total: </span>
 
           <span>$ 0.00</span>
-        </div>
+        </div> */}
 
         <div className="form-containee">
           <button type="submit">Buy</button>
@@ -53,17 +69,8 @@ const BuyForm = ({handleSubmit}) => {
 // Container
 const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit(event) {
-      event.preventDefault()
-
-      const ticker = event.target.ticker.value
-      const quantity = event.target.quantity.value
-
-      if (ticker && quantity) {
-        console.log(`Bought ${quantity} ${ticker} stocks successfully`)
-      } else {
-        console.error('Error! Invalid ticker and/or quantity.')
-      }
+    makeTransactionThunk(ticker, quantity) {
+      dispatch(makeTransactionThunkCreator(ticker, quantity))
     }
   }
 }
@@ -72,5 +79,5 @@ export default connect(null, mapDispatchToProps)(BuyForm)
 
 // Prop Types
 BuyForm.propTypes = {
-  handleSubmit: PropTypes.func
+  makeTransactionThunk: PropTypes.func
 }
