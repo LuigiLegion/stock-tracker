@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import history from '../history'
 import {removedPortfolioActionCreator} from './portfolioReducer'
+import {removedTransactionsActionCreator} from './transactionsReducer'
 
 // Action Types
 const GOT_USER = 'GOT_USER'
@@ -58,6 +59,7 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
 
+    dispatch(removedTransactionsActionCreator())
     dispatch(removedPortfolioActionCreator())
     dispatch(removedUserActionCreator())
     history.push('/login')
