@@ -35,6 +35,18 @@ label {
   color: red;
 }
 
+.background-color-red {
+  background: red;
+}
+
+.background-color-green {
+  background: green;
+}
+
+.background-color-gray {
+  background: gray;
+}
+
 .text-style-bold {
   font-weight: bold;
 }
