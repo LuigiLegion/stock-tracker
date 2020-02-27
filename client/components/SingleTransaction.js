@@ -8,11 +8,17 @@ const SingleTransaction = ({transaction}) => {
 
   return (
     <div className="transactions-column-containee">
-      <div>
-        {`BUY (${ticker}) - ${quantity} Shares @ $ ${priceInDollars}/Share`}
+      <div className="transaction-details">
+        <span className="text-style-bold">{`BUY (${ticker}): `}</span>
+
+        <span>{`${quantity} Shares @ $ ${priceInDollars}/Share`}</span>
       </div>
 
-      <div>{`Date of Purchase - (${transactionDate})`}</div>
+      <div className="transaction-details">
+        <span className="text-style-bold">Date of Purchase: </span>
+
+        <span>{`${transactionDate}`}</span>
+      </div>
     </div>
   )
 }
