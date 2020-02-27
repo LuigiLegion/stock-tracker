@@ -55,6 +55,7 @@ const BuyForm = ({makeTransactionThunk}) => {
             placeholder="Enter Quantity"
             autoComplete="quantity"
             name="quantity"
+            min="1"
           />
         </div>
 
