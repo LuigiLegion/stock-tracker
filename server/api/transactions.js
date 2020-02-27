@@ -1,6 +1,7 @@
 // Imports
 const router = require('express').Router()
-const {getQuote} = require('../helpers')
+
+const {getQuote, toCents} = require('../helpers')
 
 // Models
 const {Transaction, Portfolio} = require('../db/models')
@@ -35,7 +36,7 @@ router.post('/', async (req, res, next) => {
     // based on userId, portfolioId, ticker, quantity, and latest price,
     // and assign it to the transaction variable initialized above
     if (typeof data === 'object') {
-      const latestPriceInCents = data.latestPrice * 100
+      const latestPriceInCents = toCents(data.latestPrice)
       const totalPrice = latestPriceInCents * Number(quantity)
       const newBalance = balance - totalPrice
 
