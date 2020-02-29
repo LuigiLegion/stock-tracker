@@ -18,7 +18,9 @@ const SingleStock = ({stock}) => {
     <div
       className={`portfolio-column-containee portfolio-row-container stock-details background-color-${color}`}
     >
-      <div className="portfolio-column-stock-containee">{`${ticker} - ${quantity} Shares`}</div>
+      <div className="portfolio-column-stock-containee">{`${ticker} - ${quantity} ${
+        quantity > 1 ? 'Shares' : 'Share'
+      }`}</div>
 
       <div className="portfolio-column-price-containee">{`$ ${valueInDollars}`}</div>
     </div>

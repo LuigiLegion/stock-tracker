@@ -40,7 +40,7 @@ const BuyForm = ({makeTransactionThunk}) => {
             placeholder="Enter Ticker"
             autoComplete="ticker"
             name="ticker"
-            maxLength="4"
+            maxLength="5"
             required
           />
         </div>
