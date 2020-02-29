@@ -4,9 +4,11 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 // Component
-export const Hello = ({firstName}) => {
+export const Hello = ({firstName, onClick}) => {
   return (
-    <span className="navbar-user-name">Hello, {firstName || 'guest'}.</span>
+    <span onClick={onClick} className="navbar-user-name">
+      Hello, {firstName || 'guest'}.
+    </span>
   )
 }
 
@@ -21,5 +23,6 @@ export default connect(mapStateToProps)(Hello)
 
 // Prop Types
 Hello.propTypes = {
-  firstName: PropTypes.string
+  firstName: PropTypes.string,
+  onClick: PropTypes.func
 }
