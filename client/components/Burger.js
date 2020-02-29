@@ -1,5 +1,5 @@
 // Imports
-import React, {Fragment, useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
@@ -12,17 +12,27 @@ const Burger = ({isLoggedIn, handleClick}) => {
   const [state, setState] = useState({caret: '^', showMenu: false})
 
   useEffect(() => {
-    const handler = evt => {
-      console.log({state, evt})
+    const keyHandler = event => {
+      switch (event.key) {
+        case 'Escape':
+          return setState({...state, caret: '^', showMenu: false})
+
+        default:
+      }
+    }
+
+    const clickHandler = event => {
       if (state.showMenu) {
         setState({...state, caret: '^', showMenu: false})
       }
     }
 
-    window.addEventListener('click', handler)
+    window.addEventListener('click', clickHandler)
+    window.addEventListener('keydown', keyHandler)
 
     return () => {
-      window.removeEventListener('click', handler)
+      window.removeEventListener('click', clickHandler)
+      window.removeEventListener('keydown', keyHandler)
     }
   })
 
@@ -30,10 +40,7 @@ const Burger = ({isLoggedIn, handleClick}) => {
     <div className="burger-container">
       <div
         className="burger-containee burger-caret"
-        onClick={() => (
-          console.log({state}),
-          setState({caret: 'v', showMenu: !state.showMenu})
-        )}
+        onClick={() => setState({caret: 'v', showMenu: !state.showMenu})}
       >
         {state.caret}
       </div>
@@ -42,7 +49,11 @@ const Burger = ({isLoggedIn, handleClick}) => {
         <nav className="burger-containee burger-menu">
           {isLoggedIn ? (
             <div className="burger-links">
-              <Hello />
+              <Hello
+                onClick={event => {
+                  event.stopPropagation()
+                }}
+              />
 
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
