@@ -76,6 +76,7 @@ label {
   background-color: #424242;
   color: #fafafa;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .btn:hover,
