@@ -13,7 +13,9 @@ const SingleTransaction = ({transaction}) => {
       <div className="transaction-details">
         <span className="text-style-bold">{`BUY (${ticker}): `}</span>
 
-        <span>{`${quantity} Shares @ $ ${priceInDollars}/Share`}</span>
+        <span>{`${quantity} ${
+          quantity > 1 ? 'Shares' : 'Share'
+        } @ $ ${priceInDollars}/Share`}</span>
       </div>
 
       <div className="transaction-details">
