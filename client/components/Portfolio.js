@@ -15,10 +15,10 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
     () => {
       getPortfolioThunk()
 
-      const token = setInterval(() => getPortfolioThunk(), 60000)
+      const intervalId = setInterval(() => getPortfolioThunk(), 20000)
 
       return () => {
-        clearInterval(token)
+        clearInterval(intervalId)
       }
     },
     [getPortfolioThunk]
@@ -71,7 +71,8 @@ const mapStateToProps = state => {
   return {
     balance: state.portfolio.balance,
     value: state.portfolio.value,
-    stocks: state.portfolio.stocks
+    stocks: state.portfolio.stocks,
+    stocksCount: state.portfolio.stocks.length
   }
 }
 
