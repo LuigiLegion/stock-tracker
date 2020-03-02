@@ -45,17 +45,17 @@ label {
 
 .background-color-red {
   background: #e57373;
-  animation: fade infinite 60s linear;
+  animation: fade infinite 20s linear;
 }
 
 .background-color-green {
   background: #81c784;
-  animation: fade infinite 60s linear;
+  animation: fade infinite 20s linear;
 }
 
 .background-color-gray {
   background: #eaeaea;
-  animation: fade infinite 60s linear;
+  animation: fade infinite 20s linear;
 }
 
 .text-style-bold {
