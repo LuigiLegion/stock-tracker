@@ -29,7 +29,7 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
 
   return (
     <div className="center">
-      <h1 className="left">{`Portfolio (Value: $ ${valueInDollars})`}</h1>
+      <h4 className="left">{`Portfolio (Value: $ ${valueInDollars})`}</h4>
 
       <div className="portfolio-row-container">
         <div className="portfolio-row-stocks-containee portfolio-column-container">
