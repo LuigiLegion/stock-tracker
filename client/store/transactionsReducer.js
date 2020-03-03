@@ -2,6 +2,7 @@
 import axios from 'axios'
 
 import {getPortfolioThunkCreator} from './portfolioReducer'
+import {toastNotificationGenerator} from '../helpers'
 
 // Action Types
 const GOT_TRANSACTIONS = 'GOT_TRANSACTIONS'
@@ -60,12 +61,10 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
     dispatch(madeTransactionActionCreator(data))
 
     if (data.error) {
-      // Replace with toast notification
-      console.error(data.error)
+      toastNotificationGenerator(data.error, 'red')
     } else {
       dispatch(getPortfolioThunkCreator())
-      // Replace with toast notification
-      console.log('Purchase Succesful.')
+      toastNotificationGenerator('Purchase Successful', 'green')
     }
   } catch (error) {
     console.error(error)
