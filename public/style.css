@@ -5,6 +5,18 @@ body {
   margin-bottom: 10vh;
 }
 
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #eaeaea;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #424242;
+}
+
 a {
   color: #424242;
   text-decoration: none;
@@ -27,6 +39,10 @@ form div {
 
 label {
   display: block;
+}
+
+input::placeholder {
+  color: #9e9e9e;
 }
 
 .center {
@@ -54,7 +70,7 @@ label {
 }
 
 .background-color-gray {
-  background: #eaeaea;
+  background: #ccc;
   animation: fade infinite 20s linear;
 }
 
@@ -124,7 +140,7 @@ label {
 
 .spacer-vertical {
   border-left: thin solid #424242;
-  height: 350px;
+  min-height: 30rem;
   margin-left: 75px;
   margin-right: 60px;
 }
@@ -138,10 +154,21 @@ label {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 1em;
 }
 
 .navbar-logo-containee {
   flex: 1;
+  margin: 0;
+}
+
+.navbar-logo-navlink {
+  padding: 0;
+}
+
+.navbar-logo-navlink:hover {
+  background: none;
+  text-decoration: none;
 }
 
 .navbar-links-containee {
@@ -197,6 +224,7 @@ label {
 
 .portfolio-row-balance-containee {
   flex: 1;
+  align-self: flex-start;
 }
 
 .portfolio-column-container {
@@ -301,8 +329,13 @@ label {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: #ddd;
+  background: #424242;
   min-width: 16vw;
+  z-index: 1;
+}
+
+.burger-link:hover {
+  background: #616161;
 }
 
 .burger-close {
@@ -328,4 +361,21 @@ label {
 .home-navlink:hover {
   background: none;
   text-decoration: underline;
+}
+
+.preloader {
+  position: absolute;
+  margin: 0px;
+}
+
+.progress.preloader.preloader-inner-color {
+  background-color: #bdbdbd;
+}
+
+.progress .indeterminate.preloader-outer-color {
+  background-color: #424242;
+}
+
+.buy-form-input {
+  width: 8em;
 }

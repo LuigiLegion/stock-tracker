@@ -7,7 +7,7 @@ const SingleStock = ({stock}) => {
   const {ticker, quantity, price, open, value} = stock
   const valueInDollars = toDollars(value)
 
-  let color = 'grey'
+  let color = 'gray'
   if (price > open) {
     color = 'green'
   } else if (price < open) {

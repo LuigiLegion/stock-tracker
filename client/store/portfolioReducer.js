@@ -1,6 +1,8 @@
 // Imports
 import axios from 'axios'
 
+import {toggledPreloaderActionCreator} from './layoutReducer'
+
 // Action Types
 const GOT_PORTFOLIO = 'GOT_PORTFOLIO'
 const REMOVED_PORTFOLIO = 'REMOVED_PORTFOLIO'
@@ -26,16 +28,19 @@ export const getPortfolioThunkCreator = () => async (dispatch, getState) => {
   try {
     const {id} = getState().user
 
+    dispatch(toggledPreloaderActionCreator(true))
+
     const {data} = await axios.get(`/api/portfolios/${id}`)
 
     dispatch(gotPortfolioActionCreator(data || initialState))
+    dispatch(toggledPreloaderActionCreator(false))
   } catch (error) {
     console.error(error)
   }
 }
 
 // Reducer
-export const portfolioReducer = (state = initialState, action) => {
+const portfolioReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_PORTFOLIO:
       return {
@@ -53,3 +58,5 @@ export const portfolioReducer = (state = initialState, action) => {
       return state
   }
 }
+
+export default portfolioReducer

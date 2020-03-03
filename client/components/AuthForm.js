@@ -36,7 +36,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
   return (
     <div className="center">
-      <h2>{displayName}</h2>
+      <h4>{displayName}</h4>
 
       <form
         className="center auth-form-container"
@@ -45,11 +45,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
       >
         <div className="form-containee">
           <label htmlFor="email">
-            <small>
-              <span>Email</span>
+            <span>Email</span>
 
-              <span className="text-color-red">*</span>
-            </small>
+            <span className="text-color-red">*</span>
           </label>
 
           <input
@@ -63,11 +61,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
         <div className="form-containee">
           <label htmlFor="password">
-            <small>
-              <span>Password</span>
+            <span>Password</span>
 
-              <span className="text-color-red">*</span>
-            </small>
+            <span className="text-color-red">*</span>
           </label>
 
           <input
@@ -84,11 +80,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
           <Fragment>
             <div className="form-containee">
               <label htmlFor="passwordValidation">
-                <small>
-                  <span>Password Validation</span>
+                <span>Password Validation</span>
 
-                  <span className="text-color-red">*</span>
-                </small>
+                <span className="text-color-red">*</span>
               </label>
 
               <input
@@ -103,11 +97,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
             <div className="form-containee">
               <label htmlFor="firstName">
-                <small>
-                  <span>First Name</span>
+                <span>First Name</span>
 
-                  <span className="text-color-red">*</span>
-                </small>
+                <span className="text-color-red">*</span>
               </label>
 
               <input
@@ -121,11 +113,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
             <div className="form-containee">
               <label htmlFor="lastName">
-                <small>
-                  <span>Last Name</span>
+                <span>Last Name</span>
 
-                  <span className="text-color-red">*</span>
-                </small>
+                <span className="text-color-red">*</span>
               </label>
 
               <input

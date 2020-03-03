@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom'
 const PageNotFound = () => {
   return (
     <div className="center">
-      <h1 className="text-style-bold">404 - Page Not Found</h1>
+      <h4 className="text-style-bold">404 - Page Not Found</h4>
 
       <div className="page-not-found-message">This route does not exist.</div>
 

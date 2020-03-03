@@ -1,12 +1,14 @@
 // Imports
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 
 // Component
-const Home = () => {
+const Home = ({firstName}) => {
   return (
     <div className="center">
-      <h2>Welcome to Stock Tracker.</h2>
+      <h4>{`Welcome to Stock Tracker, ${firstName}.`}</h4>
 
       <div className="home-message">
         Navigate by clicking the triangle menu.
@@ -18,7 +20,7 @@ const Home = () => {
         <NavLink to="/portfolio" className="home-navlink">
           Portfolio
         </NavLink>{' '}
-        page!
+        page.
       </div>
 
       <div>Need to perform an audit?</div>
@@ -27,10 +29,22 @@ const Home = () => {
         <NavLink to="/transactions" className="home-navlink">
           Transactions
         </NavLink>{' '}
-        page!
+        page.
       </div>
     </div>
   )
 }
 
-export default Home
+// Container
+const mapStateToProps = state => {
+  return {
+    firstName: state.user.firstName
+  }
+}
+
+export default connect(mapStateToProps)(Home)
+
+// Prop Types
+Home.propTypes = {
+  firstName: PropTypes.string
+}

@@ -17,10 +17,12 @@ const Transactions = ({transactions, getTransactionsThunk}) => {
   )
 
   return (
-    <div className="center">
-      <h1 className="left">Transactions</h1>
+    <div className="center transactions-column-container">
+      <h4 className="left transactions-column-message-containee">
+        Transactions
+      </h4>
 
-      <div className="transactions-column-container">
+      <div className="transactions-column-message-containee transactions-column-container">
         {transactions.length ? (
           transactions.map((curTransaction, idx) => (
             <Fragment key={curTransaction.id}>
