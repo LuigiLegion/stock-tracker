@@ -58,13 +58,20 @@ const Burger = ({isLoggedIn, handleClick}) => {
               />
 
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
+              <Link className="burger-link" to="/home">
+                Home
+              </Link>
 
-              <Link to="/portfolio">Portfolio</Link>
+              <Link className="burger-link" to="/portfolio">
+                Portfolio
+              </Link>
 
-              <Link to="/transactions">Transactions</Link>
+              <Link className="burger-link" to="/transactions">
+                Transactions
+              </Link>
 
               <a
+                className="burger-link"
                 href="https://github.com/LuigiLegion/stock-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -72,16 +79,21 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <a href="#" onClick={handleClick}>
+              <a className="burger-link" href="#" onClick={handleClick}>
                 Logout
               </a>
             </div>
           ) : (
             <div className="burger-links">
               {/* The navbar will show these links before you log in */}
-              <Hello />
+              <Hello
+                onClick={event => {
+                  event.stopPropagation()
+                }}
+              />
 
               <a
+                className="burger-link"
                 href="https://github.com/LuigiLegion/stock-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -89,9 +101,13 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <Link to="/login">Login</Link>
+              <Link className="burger-link" to="/login">
+                Login
+              </Link>
 
-              <Link to="/signup">Sign Up</Link>
+              <Link className="burger-link" to="/signup">
+                Sign Up
+              </Link>
             </div>
           )}
         </nav>
