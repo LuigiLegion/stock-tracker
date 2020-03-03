@@ -356,3 +356,16 @@ label {
   background: none;
   text-decoration: underline;
 }
+
+.preloader {
+  position: absolute;
+  margin: 0px;
+}
+
+.progress.preloader.preloader-inner-color {
+  background-color: #bdbdbd;
+}
+
+.progress .indeterminate.preloader-outer-color {
+  background-color: #424242;
+}
