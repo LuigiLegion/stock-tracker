@@ -15,10 +15,10 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
     () => {
       getPortfolioThunk()
 
-      const token = setInterval(() => getPortfolioThunk(), 60000)
+      const intervalId = setInterval(() => getPortfolioThunk(), 20000)
 
       return () => {
-        clearInterval(token)
+        clearInterval(intervalId)
       }
     },
     [getPortfolioThunk]

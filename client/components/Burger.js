@@ -9,25 +9,24 @@ import {logout} from '../store'
 
 // Component
 const Burger = ({isLoggedIn, handleClick}) => {
-  const [state, setState] = useState({caret: '^', showMenu: false})
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
+    const clickHandler = () => {
+      if (open) {
+        setOpen(false)
+      }
+    }
+    window.addEventListener('click', clickHandler)
+
     const keyHandler = event => {
       switch (event.key) {
         case 'Escape':
-          return setState({...state, caret: '^', showMenu: false})
+          return setOpen(false)
 
         default:
       }
     }
-
-    const clickHandler = event => {
-      if (state.showMenu) {
-        setState({...state, caret: '^', showMenu: false})
-      }
-    }
-
-    window.addEventListener('click', clickHandler)
     window.addEventListener('keydown', keyHandler)
 
     return () => {
@@ -40,12 +39,15 @@ const Burger = ({isLoggedIn, handleClick}) => {
     <div className="burger-container">
       <div
         className="burger-containee burger-caret"
-        onClick={() => setState({caret: 'v', showMenu: !state.showMenu})}
+        onClick={() => setOpen(!open)}
       >
-        {state.caret}
+        <img
+          className={open ? 'burger-open' : 'burger-close'}
+          src="https://img.icons8.com/material-rounded/48/000000/give-way.png"
+        />
       </div>
 
-      {state.showMenu && (
+      {open && (
         <nav className="burger-containee burger-menu">
           {isLoggedIn ? (
             <div className="burger-links">
