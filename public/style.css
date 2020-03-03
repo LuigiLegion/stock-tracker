@@ -5,6 +5,18 @@ body {
   margin-bottom: 10vh;
 }
 
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #eaeaea;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #424242;
+}
+
 a {
   color: #424242;
   text-decoration: none;
@@ -138,10 +150,21 @@ label {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 1em;
 }
 
 .navbar-logo-containee {
   flex: 1;
+  margin: 0;
+}
+
+.navbar-logo-navlink {
+  padding: 0;
+}
+
+.navbar-logo-navlink:hover {
+  background: none;
+  text-decoration: none;
 }
 
 .navbar-links-containee {
@@ -301,8 +324,12 @@ label {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: #ddd;
+  background: #424242;
   min-width: 16vw;
+}
+
+.burger-link:hover {
+  background: #616161;
 }
 
 .burger-close {
