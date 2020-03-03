@@ -2,6 +2,7 @@
 import axios from 'axios'
 
 import {getPortfolioThunkCreator} from './portfolioReducer'
+import {toggledPreloaderActionCreator} from './layoutReducer'
 import {toastNotificationGenerator} from '../helpers'
 
 // Action Types
@@ -32,9 +33,12 @@ export const getTransactionsThunkCreator = () => async (dispatch, getState) => {
   try {
     const {id} = getState().user
 
+    dispatch(toggledPreloaderActionCreator(true))
+
     const {data} = await axios.get(`/api/transactions/${id}`)
 
     dispatch(gotTransactionsActionCreator(data || initialState))
+    dispatch(toggledPreloaderActionCreator(false))
   } catch (error) {
     console.error(error)
   }
@@ -56,14 +60,18 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
       quantity
     }
 
+    dispatch(toggledPreloaderActionCreator(true))
+
     const {data} = await axios.post('/api/transactions', transactionData)
 
     dispatch(madeTransactionActionCreator(data))
 
     if (data.error) {
+      dispatch(toggledPreloaderActionCreator(false))
       toastNotificationGenerator(data.error, 'red')
     } else {
       dispatch(getPortfolioThunkCreator())
+      dispatch(toggledPreloaderActionCreator(false))
       toastNotificationGenerator('Purchase Successful', 'green')
     }
   } catch (error) {
@@ -72,7 +80,7 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
 }
 
 // Reducer
-export const transactionsReducer = (state = initialState, action) => {
+const transactionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_TRANSACTIONS:
       return action.transactions
@@ -84,3 +92,5 @@ export const transactionsReducer = (state = initialState, action) => {
       return state
   }
 }
+
+export default transactionsReducer
