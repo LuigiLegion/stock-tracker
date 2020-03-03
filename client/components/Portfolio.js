@@ -71,8 +71,7 @@ const mapStateToProps = state => {
   return {
     balance: state.portfolio.balance,
     value: state.portfolio.value,
-    stocks: state.portfolio.stocks,
-    stocksCount: state.portfolio.stocks.length
+    stocks: state.portfolio.stocks
   }
 }
 
