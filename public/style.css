@@ -304,3 +304,28 @@ label {
   background: #ddd;
   min-width: 16vw;
 }
+
+.burger-close {
+  transform: rotate(180deg);
+  transition: all 0.25s ease-out;
+}
+
+.burger-open {
+  transform: rotate(0);
+  transition: all 0.25s ease-out;
+}
+
+.home-message {
+  padding-bottom: 1em;
+}
+
+.home-navlink {
+  color: #357da7;
+  text-decoration: none;
+  padding: 0;
+}
+
+.home-navlink:hover {
+  background: none;
+  text-decoration: underline;
+}
