@@ -326,6 +326,7 @@ label {
   position: absolute;
   background: #424242;
   min-width: 16vw;
+  z-index: 1;
 }
 
 .burger-link:hover {
