@@ -26,7 +26,7 @@ const BuyForm = ({makeTransactionThunk}) => {
   return (
     <div className="portfolio-column-containee">
       <form className="center buy-form-container" onSubmit={handleSubmit}>
-        <div className="form-containee">
+        <div className="form-containee buy-form-input">
           <label htmlFor="ticker">
             <span>Ticker</span>
 
@@ -43,7 +43,7 @@ const BuyForm = ({makeTransactionThunk}) => {
           />
         </div>
 
-        <div className="form-containee">
+        <div className="form-containee buy-form-input">
           <label htmlFor="quantity">
             <span>Quantity</span>
 
