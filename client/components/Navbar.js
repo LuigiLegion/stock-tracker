@@ -1,22 +1,46 @@
 // Imports
-import React, {Fragment} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
+import Links from './Links'
 import Burger from './Burger'
 import Preloader from './Preloader'
 
 // Component
 const Navbar = ({isLoading}) => {
+  const [width, setWidth] = useState(window.innerWidth)
+
+  const largeViewCheck = width > 1007
+
+  const updateNavbarDimensions = () => {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(
+    () => {
+      updateNavbarDimensions()
+      window.addEventListener('resize', updateNavbarDimensions)
+
+      return () => {
+        window.removeEventListener('resize', updateNavbarDimensions)
+        updateNavbarDimensions()
+      }
+    },
+    [width]
+  )
+
   return (
     <Fragment>
       <div className="navbar-container">
         <NavLink className="navbar-logo-navlink" to="/home">
-          <h2 className="navbar-logo-containee">Stock Tracker</h2>
+          <h2 className="navbar-logo-containee">
+            {largeViewCheck ? 'Stock Tracker' : 'STracker'}
+          </h2>
         </NavLink>
 
-        <Burger />
+        {largeViewCheck ? <Links /> : <Burger />}
       </div>
 
       <div>{isLoading ? <Preloader /> : null}</div>
