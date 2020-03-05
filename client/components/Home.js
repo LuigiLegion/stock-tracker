@@ -17,7 +17,7 @@ const Home = ({firstName}) => {
       <div>Want to see how your shares are performing?</div>
       <div className="home-message">
         Visit the{' '}
-        <NavLink to="/portfolio" className="home-navlink">
+        <NavLink to="/portfolio" className="home-navlink text-color-blue">
           Portfolio
         </NavLink>{' '}
         page.
@@ -26,7 +26,7 @@ const Home = ({firstName}) => {
       <div>Need to perform an audit?</div>
       <div className="home-message">
         Visit the{' '}
-        <NavLink to="/transactions" className="home-navlink">
+        <NavLink to="/transactions" className="home-navlink text-color-blue">
           Transactions
         </NavLink>{' '}
         page.
