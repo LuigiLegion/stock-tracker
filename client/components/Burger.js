@@ -55,23 +55,24 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 onClick={event => {
                   event.stopPropagation()
                 }}
+                color="white"
               />
 
               {/* The navbar will show these links after you log in */}
-              <Link className="burger-link" to="/home">
+              <Link className="burger-link text-color-white" to="/home">
                 Home
               </Link>
 
-              <Link className="burger-link" to="/portfolio">
+              <Link className="burger-link text-color-white" to="/portfolio">
                 Portfolio
               </Link>
 
-              <Link className="burger-link" to="/transactions">
+              <Link className="burger-link text-color-white" to="/transactions">
                 Transactions
               </Link>
 
               <a
-                className="burger-link"
+                className="burger-link text-color-white"
                 href="https://github.com/LuigiLegion/stock-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -79,7 +80,11 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <a className="burger-link" href="#" onClick={handleClick}>
+              <a
+                className="burger-link text-color-white"
+                href="#"
+                onClick={handleClick}
+              >
                 Logout
               </a>
             </div>
@@ -90,10 +95,11 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 onClick={event => {
                   event.stopPropagation()
                 }}
+                color="white"
               />
 
               <a
-                className="burger-link"
+                className="burger-link text-color-white"
                 href="https://github.com/LuigiLegion/stock-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -101,11 +107,11 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <Link className="burger-link" to="/login">
+              <Link className="burger-link text-color-white" to="/login">
                 Login
               </Link>
 
-              <Link className="burger-link" to="/signup">
+              <Link className="burger-link text-color-white" to="/signup">
                 Sign Up
               </Link>
             </div>

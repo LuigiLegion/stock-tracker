@@ -55,8 +55,20 @@ input::placeholder {
   text-align: start;
 }
 
+.text-color-blue {
+  color: #357da7;
+}
+
 .text-color-red {
-  color: red;
+  color: #e57373;
+}
+
+.text-color-gray {
+  color: #424242;
+}
+
+.text-color-white {
+  color: #fafafa;
 }
 
 .background-color-red {
@@ -353,7 +365,6 @@ input::placeholder {
 }
 
 .home-navlink {
-  color: #357da7;
   text-decoration: none;
   padding: 0;
 }
@@ -378,4 +389,28 @@ input::placeholder {
 
 .buy-form-input {
   width: 8em;
+}
+
+.links-nav {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.links-nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.links-nav-containee {
+  flex: 1;
+  align-self: center;
+  color: #424242;
+}
+
+.links-nav-containee:hover {
+  background: transparent;
 }
