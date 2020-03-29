@@ -1,3 +1,4 @@
+// Imports
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import {createLogger} from 'redux-logger'
@@ -8,6 +9,7 @@ import portfolioReducer from './portfolioReducer'
 import transactionsReducer from './transactionsReducer'
 import layoutReducer from './layoutReducer'
 
+// Initializations
 const reducer = combineReducers({
   user: userReducer,
   portfolio: portfolioReducer,
