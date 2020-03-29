@@ -34,7 +34,7 @@ const Navbar = ({isLoading}) => {
   return (
     <Fragment>
       <div className="navbar-container">
-        <NavLink className="navbar-logo-navlink" to="/home">
+        <NavLink to="/home" className="navbar-logo-navlink">
           <h2 className="navbar-logo-containee">
             {largeViewCheck ? 'Stock Tracker' : 'STracker'}
           </h2>

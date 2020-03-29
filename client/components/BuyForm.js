@@ -35,10 +35,10 @@ const BuyForm = ({makeTransactionThunk}) => {
 
           <input
             type="text"
-            placeholder="Enter Ticker"
-            autoComplete="ticker"
             name="ticker"
+            placeholder="Enter Ticker"
             maxLength="5"
+            autoComplete="ticker"
             required
           />
         </div>
@@ -52,10 +52,10 @@ const BuyForm = ({makeTransactionThunk}) => {
 
           <input
             type="number"
-            placeholder="Enter Quantity"
-            autoComplete="quantity"
             name="quantity"
+            placeholder="Enter Quantity"
             min="1"
+            autoComplete="quantity"
             required
           />
         </div>

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 // Component
 export const Hello = ({firstName, color, onClick}) => {
   return (
-    <span onClick={onClick} className={`navbar-user-name text-color-${color}`}>
+    <span className={`navbar-user-name text-color-${color}`} onClick={onClick}>
       Hello, {firstName || 'guest'}.
     </span>
   )

@@ -52,9 +52,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
           <input
             type="email"
+            name="email"
             placeholder="Enter Email"
             autoComplete="email"
-            name="email"
             required
           />
         </div>
@@ -68,10 +68,10 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
           <input
             type="password"
-            placeholder="Enter Password"
-            autoComplete="password"
             name="password"
+            placeholder="Enter Password"
             minLength="3"
+            autoComplete="password"
             required
           />
         </div>
@@ -87,10 +87,10 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
               <input
                 type="password"
-                placeholder="Re-enter Password"
-                autoComplete="passwordValidation"
                 name="passwordValidation"
+                placeholder="Re-enter Password"
                 minLength="3"
+                autoComplete="password-validation"
                 required
               />
             </div>
@@ -104,9 +104,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
               <input
                 type="text"
-                placeholder="Enter First Name"
-                autoComplete="firstName"
                 name="firstName"
+                placeholder="Enter First Name"
+                autoComplete="first-name"
                 required
               />
             </div>
@@ -120,9 +120,9 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
               <input
                 type="text"
-                placeholder="Enter Last Name"
-                autoComplete="lastName"
                 name="lastName"
+                placeholder="Enter Last Name"
+                autoComplete="last-name"
                 required
               />
             </div>
