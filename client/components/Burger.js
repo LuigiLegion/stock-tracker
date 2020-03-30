@@ -51,12 +51,7 @@ const Burger = ({isLoggedIn, handleClick}) => {
         <nav className="burger-containee burger-menu">
           {isLoggedIn ? (
             <div className="burger-links">
-              <Hello
-                onClick={event => {
-                  event.stopPropagation()
-                }}
-                color="white"
-              />
+              <Hello color="white" onClick={event => event.stopPropagation()} />
 
               {/* The navbar will show these links after you log in */}
               <Link className="burger-link text-color-white" to="/home">
@@ -91,12 +86,7 @@ const Burger = ({isLoggedIn, handleClick}) => {
           ) : (
             <div className="burger-links">
               {/* The navbar will show these links before you log in */}
-              <Hello
-                onClick={event => {
-                  event.stopPropagation()
-                }}
-                color="white"
-              />
+              <Hello color="white" onClick={event => event.stopPropagation()} />
 
               <a
                 className="burger-link text-color-white"
