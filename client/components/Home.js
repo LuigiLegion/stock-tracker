@@ -16,20 +16,20 @@ const Home = ({firstName}) => {
 
       <div>Want to see how your shares are performing?</div>
       <div className="home-message">
-        Visit the{' '}
+        {'Visit the '}
         <NavLink to="/portfolio" className="home-navlink text-color-blue">
           Portfolio
-        </NavLink>{' '}
-        page.
+        </NavLink>
+        {' page.'}
       </div>
 
       <div>Need to perform an audit?</div>
       <div className="home-message">
-        Visit the{' '}
+        {'Visit the '}
         <NavLink to="/transactions" className="home-navlink text-color-blue">
           Transactions
-        </NavLink>{' '}
-        page.
+        </NavLink>
+        {' page.'}
       </div>
     </div>
   )
