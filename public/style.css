@@ -45,6 +45,14 @@ input::placeholder {
   color: #9e9e9e;
 }
 
+input[type='text']:not(.browser-default):focus:not([readonly]),
+input[type='email']:not(.browser-default):focus:not([readonly]),
+input[type='password']:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-color: #424242;
+  box-shadow: none;
+}
+
 .center {
   text-align: center;
   margin: auto;
