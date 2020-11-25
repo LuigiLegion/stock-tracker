@@ -25,9 +25,10 @@ export const me = () => async dispatch => {
     const {data} = await axios.get('/auth/me')
 
     dispatch(gotUserActionCreator(data || initialState))
-    dispatch(toggledPreloaderActionCreator(false))
   } catch (error) {
     console.error(error)
+  } finally {
+    dispatch(toggledPreloaderActionCreator(false))
   }
 }
 
@@ -56,10 +57,11 @@ export const auth = (
 
   try {
     dispatch(gotUserActionCreator(res.data))
-    dispatch(toggledPreloaderActionCreator(false))
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
+  } finally {
+    dispatch(toggledPreloaderActionCreator(false))
   }
 }
 
@@ -72,10 +74,11 @@ export const logout = () => async dispatch => {
     dispatch(removedTransactionsActionCreator())
     dispatch(removedPortfolioActionCreator())
     dispatch(removedUserActionCreator())
-    dispatch(toggledPreloaderActionCreator(false))
     history.push('/login')
   } catch (error) {
     console.error(error)
+  } finally {
+    dispatch(toggledPreloaderActionCreator(false))
   }
 }
 

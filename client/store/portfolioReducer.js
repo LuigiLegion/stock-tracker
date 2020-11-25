@@ -26,16 +26,16 @@ export const removedPortfolioActionCreator = () => ({type: REMOVED_PORTFOLIO})
 // Thunk Creators
 export const getPortfolioThunkCreator = () => async (dispatch, getState) => {
   try {
-    const {id} = getState().user
-
     dispatch(toggledPreloaderActionCreator(true))
 
+    const {id} = getState().user
     const {data} = await axios.get(`/api/portfolios/${id}`)
 
     dispatch(gotPortfolioActionCreator(data || initialState))
-    dispatch(toggledPreloaderActionCreator(false))
   } catch (error) {
     console.error(error)
+  } finally {
+    dispatch(toggledPreloaderActionCreator(false))
   }
 }
 

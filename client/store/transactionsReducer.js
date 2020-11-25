@@ -31,16 +31,16 @@ export const removedTransactionsActionCreator = () => ({
 // Thunk Creators
 export const getTransactionsThunkCreator = () => async (dispatch, getState) => {
   try {
-    const {id} = getState().user
-
     dispatch(toggledPreloaderActionCreator(true))
 
+    const {id} = getState().user
     const {data} = await axios.get(`/api/transactions/${id}`)
 
     dispatch(gotTransactionsActionCreator(data || initialState))
-    dispatch(toggledPreloaderActionCreator(false))
   } catch (error) {
     console.error(error)
+  } finally {
+    dispatch(toggledPreloaderActionCreator(false))
   }
 }
 
@@ -49,6 +49,8 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
   getState
 ) => {
   try {
+    dispatch(toggledPreloaderActionCreator(true))
+
     const userId = getState().user.id
     const {id, balance} = getState().portfolio
 
@@ -59,23 +61,20 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
       ticker,
       quantity
     }
-
-    dispatch(toggledPreloaderActionCreator(true))
-
     const {data} = await axios.post('/api/transactions', transactionData)
 
     dispatch(madeTransactionActionCreator(data))
 
     if (data.error) {
-      dispatch(toggledPreloaderActionCreator(false))
       toastNotificationGenerator(data.error, 'red')
     } else {
       dispatch(getPortfolioThunkCreator())
-      dispatch(toggledPreloaderActionCreator(false))
       toastNotificationGenerator('Purchase Successful', 'green')
     }
   } catch (error) {
     console.error(error)
+  } finally {
+    dispatch(toggledPreloaderActionCreator(false))
   }
 }
 
