@@ -1,7 +1,7 @@
 // Imports
 const router = require('express').Router()
 
-const {getQuote, toCents} = require('../helpers')
+const {getQuote, cents} = require('../helpers')
 
 // Models
 const {Portfolio, Transaction} = require('../db/models')
@@ -41,8 +41,8 @@ router.get('/:userId', async (req, res, next) => {
         // for some reason, so I had to opt for the
         // previous close price and treat it as open
         const {latestPrice, previousClose} = await getQuote(ticker)
-        const latestPriceInCents = toCents(latestPrice)
-        const previousCloseInCents = toCents(previousClose)
+        const latestPriceInCents = cents(latestPrice)
+        const previousCloseInCents = cents(previousClose)
 
         const stock = {
           ticker,
