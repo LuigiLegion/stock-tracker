@@ -1,7 +1,7 @@
 // Imports
 const router = require('express').Router()
 
-const {getQuote, cents} = require('../helpers')
+const {quote, cents} = require('../helpers')
 
 // Models
 const {Portfolio, Transaction} = require('../db/models')
@@ -40,7 +40,7 @@ router.get('/:userId', async (req, res, next) => {
         // Open price is always being fetched as null
         // for some reason, so I had to opt for the
         // previous close price and treat it as open
-        const {latestPrice, previousClose} = await getQuote(ticker)
+        const {latestPrice, previousClose} = await quote(ticker)
         const latestPriceInCents = cents(latestPrice)
         const previousCloseInCents = cents(previousClose)
 

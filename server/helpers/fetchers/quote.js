@@ -2,7 +2,7 @@
 const iexCloudApi = require('iexcloud_api_wrapper')
 
 // Helper
-const getQuote = async ticker => {
+const quote = async ticker => {
   try {
     const data = await iexCloudApi.quote(ticker)
     return data
@@ -12,4 +12,4 @@ const getQuote = async ticker => {
 }
 
 // Exports
-module.exports = getQuote
+module.exports = quote

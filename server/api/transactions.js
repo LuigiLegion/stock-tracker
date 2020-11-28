@@ -1,7 +1,7 @@
 // Imports
 const router = require('express').Router()
 
-const {getQuote, cents} = require('../helpers')
+const {quote, cents} = require('../helpers')
 
 // Models
 const {Transaction, Portfolio} = require('../db/models')
@@ -28,7 +28,7 @@ router.post('/', async (req, res, next) => {
 
   try {
     // Get current price of stock by ticker from 3rd party API
-    const data = await getQuote(ticker)
+    const data = await quote(ticker)
 
     let transaction
 
