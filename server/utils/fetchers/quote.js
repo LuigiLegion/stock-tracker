@@ -1,7 +1,7 @@
 // Imports
 const iexCloudApi = require('iexcloud_api_wrapper')
 
-// Helper
+// Initializations
 const quote = async ticker => {
   try {
     const data = await iexCloudApi.quote(ticker)
