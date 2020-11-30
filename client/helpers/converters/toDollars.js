@@ -1,8 +1,5 @@
-// Helper
-const toDollars = cents => {
-  const dollars = (cents / 100).toFixed(2)
-  return dollars
-}
+// Initializations
+const toDollars = cents => (cents / 100).toFixed(2)
 
 // Exports
 export default toDollars
