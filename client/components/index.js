@@ -1,3 +1,4 @@
+// Exports
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
@@ -6,8 +7,8 @@
 
 export {default as Navbar} from './Navbar'
 export {default as Hello} from './Hello'
+export {Login, Signup} from './AuthForm'
 export {default as Home} from './Home'
 export {default as Portfolio} from './Portfolio'
 export {default as Transactions} from './Transactions'
 export {default as PageNotFound} from './PageNotFound'
-export {Login, Signup} from './AuthForm'

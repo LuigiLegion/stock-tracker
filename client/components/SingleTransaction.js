@@ -1,8 +1,10 @@
+// Imports
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import {toDollars} from '../helpers'
 
+// Component
 const SingleTransaction = ({transaction}) => {
   const {ticker, quantity, price, createdAt} = transaction
   const priceInDollars = toDollars(price)
@@ -27,8 +29,10 @@ const SingleTransaction = ({transaction}) => {
   )
 }
 
-export default SingleTransaction
-
+// Prop Types
 SingleTransaction.propTypes = {
   transaction: PropTypes.object
 }
+
+// Exports
+export default SingleTransaction

@@ -1,8 +1,10 @@
+// Imports
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import {toDollars} from '../helpers'
 
+// Component
 const SingleStock = ({stock}) => {
   const {ticker, quantity, price, open, value} = stock
   const valueInDollars = toDollars(value)
@@ -27,8 +29,10 @@ const SingleStock = ({stock}) => {
   )
 }
 
-export default SingleStock
-
+// Prop Types
 SingleStock.propTypes = {
   stock: PropTypes.object
 }
+
+// Exports
+export default SingleStock
