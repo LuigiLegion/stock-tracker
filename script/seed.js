@@ -1,10 +1,14 @@
 'use strict'
 
+// Imports
 const {red, green} = require('chalk')
 
 const db = require('../server/db')
+
+// Models
 const {User, Portfolio, Transaction} = require('../server/db/models')
 
+// Initializations
 async function seed() {
   await db.sync({force: true})
   console.log('Database is synced!')
@@ -137,5 +141,6 @@ if (module === require.main) {
   runSeed()
 }
 
+// Exports
 // We export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed

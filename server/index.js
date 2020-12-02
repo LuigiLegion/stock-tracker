@@ -1,16 +1,20 @@
-const path = require('path')
+// Imports
 const express = require('express')
+const path = require('path')
 const morgan = require('morgan')
 const compression = require('compression')
-const session = require('express-session')
 const passport = require('passport')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const db = require('./db')
-const sessionStore = new SequelizeStore({db})
-const PORT = process.env.PORT || 1337
-const app = express()
+const session = require('express-session')
 const socketio = require('socket.io')
 const {blueBright, magenta, yellow} = require('chalk')
+
+const db = require('./db')
+
+// Initializations
+const app = express()
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const sessionStore = new SequelizeStore({db})
+const PORT = process.env.PORT || 1337
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
@@ -145,6 +149,7 @@ async function bootApp() {
   await createApp()
   await startListening()
 }
+
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
 // It will evaluate false when this module is required by another module - for example,
@@ -155,4 +160,5 @@ if (require.main === module) {
   createApp()
 }
 
+// Exports
 module.exports = app
