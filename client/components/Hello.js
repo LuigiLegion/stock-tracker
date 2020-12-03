@@ -13,13 +13,9 @@ export const Hello = ({firstName, color, onClick}) => {
 }
 
 // Container
-const mapStateToProps = state => {
-  return {
-    firstName: state.user.firstName
-  }
-}
-
-export default connect(mapStateToProps)(Hello)
+const mapStateToProps = state => ({
+  firstName: state.user.firstName
+})
 
 // Prop Types
 Hello.propTypes = {
@@ -27,3 +23,6 @@ Hello.propTypes = {
   color: PropTypes.string,
   onClick: PropTypes.func
 }
+
+// Exports
+export default connect(mapStateToProps)(Hello)

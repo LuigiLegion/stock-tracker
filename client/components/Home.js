@@ -10,10 +10,6 @@ const Home = ({firstName}) => {
     <div className="center">
       <h4>{`Welcome to Stock Tracker, ${firstName}.`}</h4>
 
-      <div className="home-message">
-        Navigate by clicking the triangle menu.
-      </div>
-
       <div>Want to see how your shares are performing?</div>
       <div className="home-message">
         {'Visit the '}
@@ -36,15 +32,14 @@ const Home = ({firstName}) => {
 }
 
 // Container
-const mapStateToProps = state => {
-  return {
-    firstName: state.user.firstName
-  }
-}
-
-export default connect(mapStateToProps)(Home)
+const mapStateToProps = state => ({
+  firstName: state.user.firstName
+})
 
 // Prop Types
 Home.propTypes = {
   firstName: PropTypes.string
 }
+
+// Exports
+export default connect(mapStateToProps)(Home)

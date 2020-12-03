@@ -35,9 +35,9 @@ const Navbar = ({isLoading}) => {
     <Fragment>
       <div className="navbar-container">
         <NavLink to="/home" className="navbar-logo-navlink">
-          <h2 className="navbar-logo-containee">
+          <span className="text-style-bold navbar-logo navbar-logo-containee">
             {largeViewCheck ? 'Stock Tracker' : 'STracker'}
-          </h2>
+          </span>
         </NavLink>
 
         {largeViewCheck ? <Links /> : <Burger />}
@@ -49,15 +49,14 @@ const Navbar = ({isLoading}) => {
 }
 
 // Container
-const mapStateToProps = state => {
-  return {
-    isLoading: state.layout.isLoading
-  }
-}
-
-export default connect(mapStateToProps)(Navbar)
+const mapStateToProps = state => ({
+  isLoading: state.layout.isLoading
+})
 
 // Prop Types
 Navbar.propTypes = {
   isLoading: PropTypes.bool
 }
+
+// Exports
+export default connect(mapStateToProps)(Navbar)

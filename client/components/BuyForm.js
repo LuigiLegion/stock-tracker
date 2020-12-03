@@ -60,7 +60,7 @@ const BuyForm = ({makeTransactionThunk}) => {
           />
         </div>
 
-        <div className="form-btn-containee">
+        <div className="form-button-containee">
           <button className="btn" type="submit">
             <span>Buy</span>
           </button>
@@ -71,17 +71,16 @@ const BuyForm = ({makeTransactionThunk}) => {
 }
 
 // Container
-const mapDispatchToProps = dispatch => {
-  return {
-    makeTransactionThunk(ticker, quantity) {
-      dispatch(makeTransactionThunkCreator(ticker, quantity))
-    }
+const mapDispatchToProps = dispatch => ({
+  makeTransactionThunk(ticker, quantity) {
+    dispatch(makeTransactionThunkCreator(ticker, quantity))
   }
-}
-
-export default connect(null, mapDispatchToProps)(BuyForm)
+})
 
 // Prop Types
 BuyForm.propTypes = {
   makeTransactionThunk: PropTypes.func
 }
+
+// Exports
+export default connect(null, mapDispatchToProps)(BuyForm)

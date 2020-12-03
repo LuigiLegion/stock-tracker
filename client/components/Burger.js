@@ -1,6 +1,6 @@
 // Imports
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -54,17 +54,20 @@ const Burger = ({isLoggedIn, handleClick}) => {
               <Hello color="white" onClick={event => event.stopPropagation()} />
 
               {/* The navbar will show these links after you log in */}
-              <Link className="burger-link text-color-white" to="/home">
+              <NavLink to="/home" className="burger-link text-color-white">
                 Home
-              </Link>
+              </NavLink>
 
-              <Link className="burger-link text-color-white" to="/portfolio">
+              <NavLink to="/portfolio" className="burger-link text-color-white">
                 Portfolio
-              </Link>
+              </NavLink>
 
-              <Link className="burger-link text-color-white" to="/transactions">
+              <NavLink
+                to="/transactions"
+                className="burger-link text-color-white"
+              >
                 Transactions
-              </Link>
+              </NavLink>
 
               <a
                 className="burger-link text-color-white"
@@ -97,13 +100,13 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <Link className="burger-link text-color-white" to="/login">
+              <NavLink to="/login" className="burger-link text-color-white">
                 Login
-              </Link>
+              </NavLink>
 
-              <Link className="burger-link text-color-white" to="/signup">
-                Sign Up
-              </Link>
+              <NavLink to="/signup" className="burger-link text-color-white">
+                Signup
+              </NavLink>
             </div>
           )}
         </nav>
@@ -113,24 +116,21 @@ const Burger = ({isLoggedIn, handleClick}) => {
 }
 
 // Container
-const mapStateToProps = state => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
+const mapStateToProps = state => ({
+  isLoggedIn: !!state.user.id
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
+const mapDispatchToProps = dispatch => ({
+  handleClick() {
+    dispatch(logout())
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Burger)
+})
 
 // Prop Types
 Burger.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired
 }
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(Burger)

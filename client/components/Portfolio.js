@@ -67,23 +67,17 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
 }
 
 // Container
-const mapStateToProps = state => {
-  return {
-    balance: state.portfolio.balance,
-    value: state.portfolio.value,
-    stocks: state.portfolio.stocks
-  }
-}
+const mapStateToProps = state => ({
+  balance: state.portfolio.balance,
+  value: state.portfolio.value,
+  stocks: state.portfolio.stocks
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getPortfolioThunk() {
-      dispatch(getPortfolioThunkCreator())
-    }
+const mapDispatchToProps = dispatch => ({
+  getPortfolioThunk() {
+    dispatch(getPortfolioThunkCreator())
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)
+})
 
 // Prop Types
 Portfolio.propTypes = {
@@ -92,3 +86,6 @@ Portfolio.propTypes = {
   stocks: PropTypes.array,
   getPortfolioThunk: PropTypes.func
 }
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)

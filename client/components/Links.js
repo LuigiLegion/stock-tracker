@@ -1,31 +1,33 @@
+// Imports
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Hello from './Hello'
 import {logout} from '../store'
 
+// Component
 const Links = ({isLoggedIn, handleClick}) => {
   return (
     <div>
-      <nav className="row-links-containee links-nav">
+      <nav className="links-nav">
         {isLoggedIn ? (
           <div className="links-nav-container">
             <Hello className="links-nav-containee" color="gray" />
 
             {/* The navbar will show these links after you log in */}
-            <Link className="links-nav-containee" to="/home">
+            <NavLink to="/home" className="links-nav-containee">
               Home
-            </Link>
+            </NavLink>
 
-            <Link className="links-nav-containee" to="/portfolio">
+            <NavLink to="/portfolio" className="links-nav-containee">
               Portfolio
-            </Link>
+            </NavLink>
 
-            <Link className="links-nav-containee" to="/transactions">
+            <NavLink to="/transactions" className="links-nav-containee">
               Transactions
-            </Link>
+            </NavLink>
 
             <a
               className="links-nav-containee"
@@ -41,7 +43,7 @@ const Links = ({isLoggedIn, handleClick}) => {
             </a>
           </div>
         ) : (
-          <div>
+          <div className="links-nav-container">
             {/* The navbar will show these links before you log in */}
             <Hello className="links-nav-containee" color="gray" />
 
@@ -54,13 +56,13 @@ const Links = ({isLoggedIn, handleClick}) => {
               Source
             </a>
 
-            <Link className="links-nav-containee" to="/login">
+            <NavLink to="/login" className="links-nav-containee">
               Login
-            </Link>
+            </NavLink>
 
-            <Link className="links-nav-containee" to="/signup">
-              Sign Up
-            </Link>
+            <NavLink to="/signup" className="links-nav-containee">
+              Signup
+            </NavLink>
           </div>
         )}
       </nav>
@@ -69,24 +71,21 @@ const Links = ({isLoggedIn, handleClick}) => {
 }
 
 // Container
-const mapStateToProps = state => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
+const mapStateToProps = state => ({
+  isLoggedIn: !!state.user.id
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
+const mapDispatchToProps = dispatch => ({
+  handleClick() {
+    dispatch(logout())
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Links)
+})
 
 // Prop Types
 Links.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired
 }
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(Links)

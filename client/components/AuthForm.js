@@ -129,7 +129,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
           </Fragment>
         ) : null}
 
-        <div className="form-btn-containee">
+        <div className="form-button-containee">
           <button className="btn" type="submit">
             <span>{displayName}</span>
           </button>
@@ -137,19 +137,19 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
         {error &&
           error.response && (
-            <div className="text-color-red">{`Error! ${
-              error.response.data
-            }.`}</div>
+            <div className="text-style-bold text-color-red">
+              {`Error! ${error.response.data}.`}
+            </div>
           )}
 
         {passwordValidationError && (
-          <div className="text-color-red">
+          <div className="text-style-bold text-color-red">
             Error! Please re-enter your password.
           </div>
         )}
       </form>
 
-      <div className="center google-oauth">
+      <div className="google-oauth">
         <a href="/auth/google">{displayName} with Google</a>
       </div>
     </div>
@@ -163,32 +163,23 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  **/
-const mapLoginToProps = state => {
-  return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.user.error
-  }
-}
+const mapLoginToProps = state => ({
+  name: 'login',
+  displayName: 'Log In',
+  error: state.user.error
+})
 
-const mapSignupToProps = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
+const mapSignupToProps = state => ({
+  name: 'signup',
+  displayName: 'Sign Up',
+  error: state.user.error
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    authThunk(formName, email, password, firstName, lastName) {
-      dispatch(auth(formName, email, password, firstName, lastName))
-    }
+const mapDispatchToProps = dispatch => ({
+  authThunk(formName, email, password, firstName, lastName) {
+    dispatch(auth(formName, email, password, firstName, lastName))
   }
-}
-
-export const Login = connect(mapLoginToProps, mapDispatchToProps)(AuthForm)
-export const Signup = connect(mapSignupToProps, mapDispatchToProps)(AuthForm)
+})
 
 // Prop Types
 AuthForm.propTypes = {
@@ -197,3 +188,7 @@ AuthForm.propTypes = {
   error: PropTypes.object,
   authThunk: PropTypes.func.isRequired
 }
+
+// Exports
+export const Login = connect(mapLoginToProps, mapDispatchToProps)(AuthForm)
+export const Signup = connect(mapSignupToProps, mapDispatchToProps)(AuthForm)

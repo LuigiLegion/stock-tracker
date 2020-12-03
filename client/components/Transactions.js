@@ -42,25 +42,23 @@ const Transactions = ({transactions, getTransactionsThunk}) => {
     </div>
   )
 }
+
 // Container
-const mapStateToProps = state => {
-  return {
-    transactions: state.transactions
-  }
-}
+const mapStateToProps = state => ({
+  transactions: state.transactions
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getTransactionsThunk() {
-      dispatch(getTransactionsThunkCreator())
-    }
+const mapDispatchToProps = dispatch => ({
+  getTransactionsThunk() {
+    dispatch(getTransactionsThunkCreator())
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Transactions)
+})
 
 // Prop Types
 Transactions.propTypes = {
   transactions: PropTypes.array,
   getTransactionsThunk: PropTypes.func
 }
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(Transactions)
