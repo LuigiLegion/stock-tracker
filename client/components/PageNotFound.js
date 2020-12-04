@@ -11,10 +11,11 @@ const PageNotFound = () => {
       <div className="page-not-found-message">This route does not exist.</div>
 
       <NavLink to="/home">
-        <span className="bold-text-style">← Back To Home</span>
+        <span className="text-style-bold">← Back To Home</span>
       </NavLink>
     </div>
   )
 }
 
+// Exports
 export default PageNotFound
