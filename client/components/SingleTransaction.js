@@ -2,12 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {toDollars} from '../helpers'
+import {dollars} from '../utils'
 
 // Component
 const SingleTransaction = ({transaction}) => {
   const {ticker, quantity, price, createdAt} = transaction
-  const priceInDollars = toDollars(price)
+  const priceInDollars = dollars(price)
   const transactionDate = new Date(Date.parse(createdAt))
 
   return (

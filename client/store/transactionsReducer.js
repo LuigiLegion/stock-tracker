@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import {getPortfolioThunkCreator} from './portfolioReducer'
 import {toggledPreloaderActionCreator} from './layoutReducer'
-import {toastNotificationGenerator} from '../helpers'
+import {toastNotificationGenerator} from '../utils'
 
 // Action Types
 const GOT_TRANSACTIONS = 'GOT_TRANSACTIONS'
