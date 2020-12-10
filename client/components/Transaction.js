@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {dollars} from '../utils'
 
 // Component
-const SingleTransaction = ({transaction}) => {
+const Transaction = ({transaction}) => {
   const {ticker, quantity, price, createdAt} = transaction
   const priceInDollars = dollars(price)
   const transactionDate = new Date(Date.parse(createdAt))
@@ -30,9 +30,9 @@ const SingleTransaction = ({transaction}) => {
 }
 
 // Prop Types
-SingleTransaction.propTypes = {
+Transaction.propTypes = {
   transaction: PropTypes.object
 }
 
 // Exports
-export default SingleTransaction
+export default Transaction
