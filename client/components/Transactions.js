@@ -3,7 +3,7 @@ import React, {Fragment, useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import SingleTransaction from './SingleTransaction'
+import Transaction from './Transaction'
 import Spacer from './Spacer'
 import {getTransactionsThunkCreator} from '../store/transactionsReducer'
 
@@ -26,7 +26,7 @@ const Transactions = ({transactions, getTransactionsThunk}) => {
         {transactions.length ? (
           transactions.map((curTransaction, idx) => (
             <Fragment key={curTransaction.id}>
-              <SingleTransaction transaction={curTransaction} />
+              <Transaction transaction={curTransaction} />
 
               {idx < transactions.length - 1 && <Spacer type="horizontal" />}
             </Fragment>
