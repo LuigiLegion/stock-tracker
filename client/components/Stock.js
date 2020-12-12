@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {dollars} from '../utils'
 
 // Component
-const SingleStock = ({stock}) => {
+const Stock = ({stock}) => {
   const {ticker, quantity, price, open, value} = stock
   const valueInDollars = dollars(value)
 
@@ -30,9 +30,9 @@ const SingleStock = ({stock}) => {
 }
 
 // Prop Types
-SingleStock.propTypes = {
+Stock.propTypes = {
   stock: PropTypes.object
 }
 
 // Exports
-export default SingleStock
+export default Stock
