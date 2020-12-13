@@ -3,7 +3,7 @@ import React, {Fragment, useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import SingleStock from './SingleStock'
+import Stock from './Stock'
 import Spacer from './Spacer'
 import BuyForm from './BuyForm'
 import {getPortfolioThunkCreator} from '../store/portfolioReducer'
@@ -36,7 +36,7 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
           {stocks.length ? (
             stocks.map((curStock, idx) => (
               <Fragment key={curStock.ticker}>
-                <SingleStock stock={curStock} />
+                <Stock stock={curStock} />
 
                 {idx < stocks.length - 1 && <Spacer type="horizontal" />}
               </Fragment>
