@@ -21,5 +21,9 @@ const middleware = composeWithDevTools(
 )
 const store = createStore(reducer, middleware)
 
+// Exports
 export default store
 export * from './userReducer'
+export * from './portfolioReducer'
+export * from './transactionsReducer'
+export * from './layoutReducer'
