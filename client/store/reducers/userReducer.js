@@ -1,7 +1,7 @@
 // Imports
 import axios from 'axios'
 
-import history from '../history'
+import history from '../../history'
 import {removedPortfolioActionCreator} from './portfolioReducer'
 import {removedTransactionsActionCreator} from './transactionsReducer'
 import {toggledPreloaderActionCreator} from './layoutReducer'
