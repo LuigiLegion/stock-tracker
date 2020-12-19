@@ -4,8 +4,8 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Links from './Links'
-import Burger from './Burger'
+import Links from '../Links'
+import Burger from '../Burger'
 import Preloader from './Preloader'
 
 // Component
