@@ -8,7 +8,7 @@ import Hello from './Hello'
 import {logout} from '../store'
 
 // Component
-const Burger = ({isLoggedIn, handleClick}) => {
+const LinksBurger = ({isLoggedIn, handleClick}) => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -127,10 +127,10 @@ const mapDispatchToProps = dispatch => ({
 })
 
 // Prop Types
-Burger.propTypes = {
+LinksBurger.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired
 }
 
 // Exports
-export default connect(mapStateToProps, mapDispatchToProps)(Burger)
+export default connect(mapStateToProps, mapDispatchToProps)(LinksBurger)
