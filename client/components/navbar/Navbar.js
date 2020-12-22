@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Links from '../Links'
-import Burger from '../Burger'
+import LinksBurger from '../LinksBurger'
 import Preloader from './Preloader'
 
 // Component
@@ -40,7 +40,7 @@ const Navbar = ({isLoading}) => {
           </span>
         </NavLink>
 
-        {largeViewCheck ? <Links /> : <Burger />}
+        {largeViewCheck ? <Links /> : <LinksBurger />}
       </div>
 
       <div>{isLoading ? <Preloader /> : null}</div>
