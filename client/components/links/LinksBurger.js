@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Hello from './Hello'
-import {logout} from '../store'
+import {logout} from '../../store'
 
 // Component
 const LinksBurger = ({isLoggedIn, handleClick}) => {
