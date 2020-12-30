@@ -3,8 +3,7 @@ import React, {Fragment, useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Transaction from './Transaction'
-import Spacer from '../components/Spacer'
+import {Transaction, Spacer} from '../index'
 import {getTransactionsThunkCreator} from '../store/transactionsReducer'
 
 // Component

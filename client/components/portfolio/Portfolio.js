@@ -3,9 +3,7 @@ import React, {Fragment, useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Stock from './Stock'
-import Spacer from './Spacer'
-import BuyForm from './BuyForm'
+import {BuyForm, Stock, Spacer} from '../index'
 import {getPortfolioThunkCreator} from '../store/portfolioReducer'
 import {dollars} from '../utils'
 
