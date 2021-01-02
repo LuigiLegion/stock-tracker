@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {makeTransactionThunkCreator} from '../store/transactionsReducer'
+import {makeTransactionThunkCreator} from '../../store'
 
 // Component
 const BuyForm = ({makeTransactionThunk}) => {

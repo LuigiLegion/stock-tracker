@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import {Transaction, Spacer} from '../index'
-import {getTransactionsThunkCreator} from '../store/transactionsReducer'
+import {getTransactionsThunkCreator} from '../../store'
 
 // Component
 const Transactions = ({transactions, getTransactionsThunk}) => {

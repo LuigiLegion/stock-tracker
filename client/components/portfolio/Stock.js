@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {dollars} from '../utils'
+import {dollars} from '../../utils'
 
 // Component
 const Stock = ({stock}) => {

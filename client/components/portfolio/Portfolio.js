@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import {BuyForm, Stock, Spacer} from '../index'
-import {getPortfolioThunkCreator} from '../store/portfolioReducer'
-import {dollars} from '../utils'
+import {getPortfolioThunkCreator} from '../../store'
+import {dollars} from '../../utils'
 
 // Component
 const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {

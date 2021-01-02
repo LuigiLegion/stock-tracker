@@ -3,7 +3,7 @@ import React, {Fragment, useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {auth} from '../store'
+import {auth} from '../../store'
 
 // Component
 const AuthForm = ({name, displayName, error, authThunk}) => {
