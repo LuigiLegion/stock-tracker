@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {Links, LinksBurger, Preloader} from '../index'
+import {Links, LinksBurger, Preloader} from '..'
 
 // Component
 const Navbar = ({isLoading}) => {
