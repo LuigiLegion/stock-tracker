@@ -15,6 +15,7 @@ router.get('/:userId', async (req, res, next) => {
       // it won't help if we just send everything to anyone who asks!
       attributes: ['id', 'googleId', 'firstName', 'lastName', 'email']
     })
+
     res.json(user)
   } catch (error) {
     next(error)

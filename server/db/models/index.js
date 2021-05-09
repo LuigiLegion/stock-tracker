@@ -1,7 +1,9 @@
+// Imports
 const User = require('./user')
 const Portfolio = require('./portfolio')
 const Transaction = require('./transaction')
 
+// Associations
 /**
  * If we had any associations to make, this would be a great place to put them!
  * ex. if we had another model called BlogPost, we might say:
@@ -25,6 +27,7 @@ Transaction.belongsTo(Portfolio)
  * instead of: const User = require('../db/models/user')
  **/
 
+// Exports
 module.exports = {
   User,
   Portfolio,
