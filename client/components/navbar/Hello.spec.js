@@ -12,6 +12,14 @@ enzyme.configure({adapter})
 
 // Tests
 describe('Hello', () => {
+  it('renders guest as the first name in a span when the firstName prop is not received', () => {
+    const hello = shallow(
+      <Hello color="white" onClick={event => event.stopPropagation()} />
+    )
+
+    expect(hello.find('span').text()).to.be.equal('Hello, guest.')
+  })
+
   it('renders the first name in a span when the firstName prop is received', () => {
     const hello = shallow(
       <Hello
