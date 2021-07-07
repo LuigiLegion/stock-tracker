@@ -1,8 +1,7 @@
 // Imports
 import axios from 'axios'
 
-import {getPortfolioThunkCreator} from './portfolioReducer'
-import {toggledPreloaderActionCreator} from './layoutReducer'
+import {getPortfolioThunkCreator, toggledPreloaderActionCreator} from '..'
 import {toastNotification} from '../../utils'
 
 // Initial State

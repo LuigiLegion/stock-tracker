@@ -2,9 +2,11 @@
 import axios from 'axios'
 
 import history from '../../history'
-import {removedPortfolioActionCreator} from './portfolioReducer'
-import {removedTransactionsActionCreator} from './transactionsReducer'
-import {toggledPreloaderActionCreator} from './layoutReducer'
+import {
+  removedPortfolioActionCreator,
+  removedTransactionsActionCreator,
+  toggledPreloaderActionCreator
+} from '..'
 
 // Action Types
 const GOT_USER = 'GOT_USER'
@@ -15,6 +17,7 @@ const initialState = {}
 
 // Action Creators
 export const gotUserActionCreator = user => ({type: GOT_USER, user})
+
 export const removedUserActionCreator = () => ({type: REMOVED_USER})
 
 // Thunk Creators
@@ -52,14 +55,15 @@ export const auth = (
     })
   } catch (authError) {
     dispatch(toggledPreloaderActionCreator(false))
+    console.error(authError)
     return dispatch(gotUserActionCreator({error: authError}))
   }
 
   try {
     dispatch(gotUserActionCreator(res.data))
     history.push('/home')
-  } catch (dispatchOrHistoryErr) {
-    console.error(dispatchOrHistoryErr)
+  } catch (dispatchOrHistoryError) {
+    console.error(dispatchOrHistoryError)
   } finally {
     dispatch(toggledPreloaderActionCreator(false))
   }
