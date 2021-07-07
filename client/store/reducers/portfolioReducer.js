@@ -3,10 +3,6 @@ import axios from 'axios'
 
 import {toggledPreloaderActionCreator} from './layoutReducer'
 
-// Action Types
-const GOT_PORTFOLIO = 'GOT_PORTFOLIO'
-const REMOVED_PORTFOLIO = 'REMOVED_PORTFOLIO'
-
 // Initial State
 const initialState = {
   id: 0,
@@ -14,6 +10,10 @@ const initialState = {
   value: 0,
   stocks: []
 }
+
+// Action Types
+const GOT_PORTFOLIO = 'GOT_PORTFOLIO'
+const REMOVED_PORTFOLIO = 'REMOVED_PORTFOLIO'
 
 // Action Creators
 export const gotPortfolioActionCreator = portfolio => ({

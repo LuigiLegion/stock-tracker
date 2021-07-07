@@ -5,13 +5,13 @@ import {getPortfolioThunkCreator} from './portfolioReducer'
 import {toggledPreloaderActionCreator} from './layoutReducer'
 import {toastNotification} from '../../utils'
 
+// Initial State
+const initialState = []
+
 // Action Types
 const GOT_TRANSACTIONS = 'GOT_TRANSACTIONS'
 const MADE_TRANSACTION = 'MADE_TRANSACTION'
 const REMOVED_TRANSACTIONS = 'REMOVED_TRANSACTIONS'
-
-// Initial State
-const initialState = []
 
 // Action Creators
 export const gotTransactionsActionCreator = transactions => ({
