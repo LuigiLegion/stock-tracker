@@ -21,68 +21,68 @@ export const gotUserActionCreator = user => ({type: GOT_USER, user})
 export const removedUserActionCreator = () => ({type: REMOVED_USER})
 
 // Thunk Creators
-export const me = () => async dispatch => {
-  try {
-    dispatch(toggledPreloaderActionCreator(true))
+export const me = () => {
+  return async dispatch => {
+    try {
+      dispatch(toggledPreloaderActionCreator(true))
 
-    const {data} = await axios.get('/auth/me')
+      const {data} = await axios.get('/auth/me')
 
-    dispatch(gotUserActionCreator(data || initialState))
-  } catch (error) {
-    console.error(error)
-  } finally {
-    dispatch(toggledPreloaderActionCreator(false))
+      dispatch(gotUserActionCreator(data || initialState))
+    } catch (error) {
+      console.error(error)
+    } finally {
+      dispatch(toggledPreloaderActionCreator(false))
+    }
   }
 }
 
-export const auth = (
-  method,
-  email,
-  password,
-  firstName,
-  lastName
-) => async dispatch => {
-  let res
+export const auth = (method, email, password, firstName, lastName) => {
+  return async dispatch => {
+    let res
 
-  try {
-    dispatch(toggledPreloaderActionCreator(true))
+    try {
+      dispatch(toggledPreloaderActionCreator(true))
 
-    res = await axios.post(`/auth/${method}`, {
-      firstName,
-      lastName,
-      email,
-      password
-    })
-  } catch (authError) {
-    dispatch(toggledPreloaderActionCreator(false))
-    console.error(authError)
-    return dispatch(gotUserActionCreator({error: authError}))
-  }
+      res = await axios.post(`/auth/${method}`, {
+        firstName,
+        lastName,
+        email,
+        password
+      })
+    } catch (authError) {
+      dispatch(toggledPreloaderActionCreator(false))
+      console.error(authError)
+      return dispatch(gotUserActionCreator({error: authError}))
+    }
 
-  try {
-    dispatch(gotUserActionCreator(res.data))
-    history.push('/home')
-  } catch (dispatchOrHistoryError) {
-    console.error(dispatchOrHistoryError)
-  } finally {
-    dispatch(toggledPreloaderActionCreator(false))
+    try {
+      dispatch(gotUserActionCreator(res.data))
+      history.push('/home')
+    } catch (dispatchOrHistoryError) {
+      console.error(dispatchOrHistoryError)
+    } finally {
+      dispatch(toggledPreloaderActionCreator(false))
+    }
   }
 }
 
-export const logout = () => async dispatch => {
-  try {
-    dispatch(toggledPreloaderActionCreator(true))
+export const logout = () => {
+  return async dispatch => {
+    try {
+      dispatch(toggledPreloaderActionCreator(true))
 
-    await axios.post('/auth/logout')
+      await axios.post('/auth/logout')
 
-    dispatch(removedTransactionsActionCreator())
-    dispatch(removedPortfolioActionCreator())
-    dispatch(removedUserActionCreator())
-    history.push('/login')
-  } catch (error) {
-    console.error(error)
-  } finally {
-    dispatch(toggledPreloaderActionCreator(false))
+      dispatch(removedTransactionsActionCreator())
+      dispatch(removedPortfolioActionCreator())
+      dispatch(removedUserActionCreator())
+      history.push('/login')
+    } catch (error) {
+      console.error(error)
+    } finally {
+      dispatch(toggledPreloaderActionCreator(false))
+    }
   }
 }
 
