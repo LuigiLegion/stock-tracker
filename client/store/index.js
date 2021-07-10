@@ -14,7 +14,7 @@ const store = createStore(rootReducer, middleware)
 
 // Exports
 export default store
-export * from './reducers/userReducer'
+export * from './reducers/layoutReducer'
 export * from './reducers/portfolioReducer'
 export * from './reducers/transactionsReducer'
-export * from './reducers/layoutReducer'
+export * from './reducers/userReducer'
