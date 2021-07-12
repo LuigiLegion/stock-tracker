@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => ({
 
 // Prop Types
 Transactions.propTypes = {
-  transactions: PropTypes.array,
+  transactions: PropTypes.arrayOf(PropTypes.object),
   getTransactionsThunk: PropTypes.func
 }
 

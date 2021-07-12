@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => ({
 Portfolio.propTypes = {
   balance: PropTypes.number,
   value: PropTypes.number,
-  stocks: PropTypes.array,
+  stocks: PropTypes.arrayOf(PropTypes.object),
   getPortfolioThunk: PropTypes.func
 }
 
