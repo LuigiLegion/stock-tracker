@@ -11,20 +11,26 @@ const Home = ({firstName}) => {
       <h4>{`Welcome to Stock Tracker, ${firstName}.`}</h4>
 
       <div>Want to see how your shares are performing?</div>
+
       <div className="home-message">
         {'Visit the '}
+
         <NavLink to="/portfolio" className="home-navlink text-color-blue">
           Portfolio
         </NavLink>
+
         {' page.'}
       </div>
 
       <div>Need to perform an audit?</div>
+
       <div className="home-message">
         {'Visit the '}
+
         <NavLink to="/transactions" className="home-navlink text-color-blue">
           Transactions
         </NavLink>
+
         {' page.'}
       </div>
     </div>
