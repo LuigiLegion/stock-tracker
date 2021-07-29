@@ -1,5 +1,5 @@
 // Imports
-import React, {Fragment, useState} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -77,7 +77,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
         </div>
 
         {name === 'signup' ? (
-          <Fragment>
+          <>
             <div className="form-containee">
               <label htmlFor="passwordValidation">
                 <span>Password Validation</span>
@@ -126,7 +126,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
                 required
               />
             </div>
-          </Fragment>
+          </>
         ) : null}
 
         <div className="form-button-containee">

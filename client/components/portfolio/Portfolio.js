@@ -40,11 +40,11 @@ const Portfolio = ({balance, value, stocks, getPortfolioThunk}) => {
               </Fragment>
             ))
           ) : (
-            <Fragment>
+            <>
               <div>No stocks were found.</div>
 
               <div>Buy a stock to populate this section.</div>
-            </Fragment>
+            </>
           )}
         </div>
 
