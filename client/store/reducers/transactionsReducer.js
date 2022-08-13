@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 import {getPortfolioThunkCreator, toggledPreloaderActionCreator} from '..'
-import {toastNotification} from '../../utils'
+import {toast} from '../../utils'
 
 // Initial State
 const initialState = []
@@ -65,10 +65,10 @@ export const makeTransactionThunkCreator = (ticker, quantity) => async (
     dispatch(madeTransactionActionCreator(data))
 
     if (data.error) {
-      toastNotification(data.error, 'red')
+      toast(data.error, 'red')
     } else {
       dispatch(getPortfolioThunkCreator())
-      toastNotification('Purchase Successful', 'green')
+      toast('Purchase Successful', 'green')
     }
   } catch (error) {
     console.error(error)
