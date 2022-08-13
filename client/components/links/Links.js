@@ -17,15 +17,15 @@ const Links = ({isLoggedIn, handleClick}) => {
             <Hello className="links-nav-containee" color="gray" />
 
             {/* The navbar will show these links after you log in */}
-            <NavLink to="/home" className="links-nav-containee">
+            <NavLink className="links-nav-containee" to="/home">
               Home
             </NavLink>
 
-            <NavLink to="/portfolio" className="links-nav-containee">
+            <NavLink className="links-nav-containee" to="/portfolio">
               Portfolio
             </NavLink>
 
-            <NavLink to="/transactions" className="links-nav-containee">
+            <NavLink className="links-nav-containee" to="/transactions">
               Transactions
             </NavLink>
 
@@ -56,11 +56,11 @@ const Links = ({isLoggedIn, handleClick}) => {
               Source
             </a>
 
-            <NavLink to="/login" className="links-nav-containee">
+            <NavLink className="links-nav-containee" to="/login">
               Login
             </NavLink>
 
-            <NavLink to="/signup" className="links-nav-containee">
+            <NavLink className="links-nav-containee" to="/signup">
               Signup
             </NavLink>
           </div>
