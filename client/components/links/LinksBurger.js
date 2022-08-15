@@ -54,17 +54,17 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               <Hello color="white" onClick={event => event.stopPropagation()} />
 
               {/* The navbar will show these links after you log in */}
-              <NavLink to="/home" className="burger-link text-color-white">
+              <NavLink className="burger-link text-color-white" to="/home">
                 Home
               </NavLink>
 
-              <NavLink to="/portfolio" className="burger-link text-color-white">
+              <NavLink className="burger-link text-color-white" to="/portfolio">
                 Portfolio
               </NavLink>
 
               <NavLink
-                to="/transactions"
                 className="burger-link text-color-white"
+                to="/transactions"
               >
                 Transactions
               </NavLink>
@@ -100,11 +100,11 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <NavLink to="/login" className="burger-link text-color-white">
+              <NavLink className="burger-link text-color-white" to="/login">
                 Login
               </NavLink>
 
-              <NavLink to="/signup" className="burger-link text-color-white">
+              <NavLink className="burger-link text-color-white" to="/signup">
                 Signup
               </NavLink>
             </div>
