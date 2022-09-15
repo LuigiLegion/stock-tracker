@@ -5,6 +5,7 @@
  * having to figure out which file they belong to!
  **/
 export {default as PageNotFound} from './404/PageNotFound'
+export {default as About} from './about/About'
 export {Login, Signup} from './auth/AuthForm'
 export {default as Home} from './dashboard/Home'
 export {default as Spacer} from './layout/Spacer'
