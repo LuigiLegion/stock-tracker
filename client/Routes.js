@@ -5,12 +5,13 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import {
+  PageNotFound,
+  About,
   Login,
   Signup,
   Home,
   Portfolio,
-  Transactions,
-  PageNotFound
+  Transactions
 } from './components'
 import {me} from './store'
 
@@ -28,15 +29,18 @@ const Routes = ({loadInitialData, isLoggedIn}) => {
       {/* Routes placed here are available to all visitors */}
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+
       {isLoggedIn && (
         <Switch>
           {/* Routes placed here are only available after logging in */}
           <Route path="/home" component={Home} />
+          <Route path="/about" component={About} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/transactions" component={Transactions} />
           <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       )}
+
       {/* Displays our Login component as a fallback */}
       <Route component={Login} />
     </Switch>
