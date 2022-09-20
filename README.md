@@ -12,7 +12,7 @@ Coming soon...
 
 ## Description
 
-Web app that allows users to buy shares, review their past transactions, and keep track of the performance of their portfolio in real time.
+Web app that allows users to buy shares, review their past transactions, and keep track of the performance of their mock portfolio in real time.
 
 MVP completed in 10 days as a solo project for the NYC Tech Talent Pipeline.
 
